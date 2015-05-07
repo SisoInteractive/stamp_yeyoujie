@@ -69,15 +69,21 @@ input {
 .radio.animated {
   opacity: 1;
   transform: rotate(-18deg);
+  -webkit-transform: rotate(-18deg);
   transform-origin: 59px 11px;
+  -webkit-transform-origin: 59px 11px;
 }
 .radio.animated .radio-handlebar {
   transform: rotate(-18deg);
+  -webkit-transform: rotate(-18deg);
   transform-origin: 59px 11px;
+  -webkit-transform-origin: 59px 11px;
 }
 .radio.play .radio-handlebar {
   transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
   transform-origin: 50% 50% 0;
+  -webkit-transform-origin: 50% 50% 0;
 }
 .radio.play {
   transform: rotate(0deg);
@@ -97,33 +103,42 @@ input {
   -webkit-animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
   transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
 }
 @keyframes rotateSelf {
   0% {
     transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
   }
   20% {
     transform: rotate(60deg);
+    -webkit-transform: rotate(60deg);
   }
   55% {
     transform: rotate(220deg);
+    -webkit-transform: rotate(220deg);
   }
   100% {
     transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
   }
 }
 @-webkit-keyframes rotateSelf {
   0% {
     transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
   }
   20% {
     transform: rotate(60deg);
+    -webkit-transform: rotate(60deg);
   }
   55% {
     transform: rotate(220deg);
+    -webkit-transform: rotate(220deg);
   }
   100% {
     transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
   }
 }
 .radio-handlebar {
@@ -132,7 +147,9 @@ input {
   right: 0;
   width: 80%;
   transform: rotate(-50deg);
+  -webkit-transform: rotate(-50deg);
   transform-origin: 50% 0;
+  -webkit-transform-origin: 50% 0;
 }
 /* letter */
 .letter {
@@ -141,6 +158,7 @@ input {
   left: 11%;
   width: 78%;
   transform: translateY(120%);
+  -webkit-transform: translateY(120%);
   -webkit-transition: transform 1s ease-out;
   -moz-transition: transform 1s ease-out;
   -ms-transition: transform 1s ease-out;
@@ -149,6 +167,7 @@ input {
 }
 .letter.animated {
   transform: translateY(0);
+  -webkit-transform: translateY(0);
 }
 .letter-stamp {
   position: absolute;
@@ -201,6 +220,7 @@ input {
 .a-gaizhang {
   opacity: 0;
   transform: scale(3);
+  -webkit-transform: scale(3);
   -webkit-transition: transform .2s;
   -moz-transition: transform .2s;
   -ms-transition: transform .2s;
@@ -209,6 +229,7 @@ input {
 }
 .a-gaizhang.animated {
   transform: scale(1);
+  -webkit-transform: scale(1);
   opacity: 1;
 }
 /*************************************/
