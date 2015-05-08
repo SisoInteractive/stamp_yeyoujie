@@ -326,46 +326,30 @@ input {
   -webkit-transition: -webkit-transform 0.25s ease-in;
   transition: transform 0.25s ease-in;
 }
-@keyframes float {
-  0% {
-    -webkit-transform: scale(1) translateX(0px);
-            transform: scale(1) translateX(0px);
-    opacity: 0;
-  }
-  20% {
-    -webkit-transform: scale(1.15) translateX(-2px);
-            transform: scale(1.15) translateX(-2px);
-  }
-  45% {
-    -webkit-transform: scale(1.1) translateX(2px);
-            transform: scale(1.1) translateX(2px);
-    opacity: 1;
-  }
-  90% {
-    -webkit-transform: scale(0.9) translateX(1px);
-            transform: scale(0.9) translateX(1px);
-    opacity: 0.6;
-  }
-}
 @-webkit-keyframes float {
   0% {
-    -webkit-transform: scale(1) translateX(0px);
-            transform: scale(1) translateX(0px);
     opacity: 0;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
   }
   20% {
-    -webkit-transform: scale(1.15) translateX(-2px);
-            transform: scale(1.15) translateX(-2px);
+    -webkit-transform: translateX(2px);
+            transform: translateX(2px);
   }
   45% {
-    -webkit-transform: scale(1.1) translateX(2px);
-            transform: scale(1.1) translateX(2px);
     opacity: 1;
+    -webkit-transform: translateX(-1px);
+            transform: translateX(-1px);
   }
   90% {
-    -webkit-transform: scale(0.9) translateX(1px);
-            transform: scale(0.9) translateX(1px);
     opacity: 0.6;
+    -webkit-transform: translateX(-2px);
+            transform: translateX(-2px);
+  }
+  100% {
+    opacity: 0.1;
+    -webkit-transform: translateX(-1px);
+            transform: translateX(-1px);
   }
 }
 /* scene 01 */

@@ -83,7 +83,7 @@ var app = {
             $('.scene01').fadeOut(300, function (){
 
                 //  letter in
-                app.letter.showLetter();
+                app.letter.showLetter(2);
 
                 //  show postmark
                 setTimeout(function (){
@@ -96,7 +96,7 @@ var app = {
                 //  into scene 3
                 setTimeout(function (){
                     scene03toScene07(app.letter.letterContext['para0' + scene03To07RecursionIndex]);
-                }, 14000);
+                }, 12000);
             });
         }
 
@@ -122,7 +122,7 @@ var app = {
                 //  letter in
                 setTimeout(function () {
                     //  letter in
-                    app.letter.showLetter();
+                    app.letter.showLetter(scene03To07RecursionIndex);
 
                     //  show postmark
                     setTimeout(function (){
@@ -136,7 +136,7 @@ var app = {
                             //  into scene 3
                             setTimeout(function (){
                                 scene03toScene07(app.letter.letterContext['para0' + scene03To07RecursionIndex]);
-                            }, 14000);
+                            }, 12000);
                         }
                     }, 2000);
                 }, 2500);
@@ -154,17 +154,36 @@ var app = {
 
             app.letter.letterContext['para0' + i] = img;
         }
+
+        //  make stamp
+        //  make para sentences
+        for (var j = 1; j <= 6; j++) {
+            var img = new Image();
+            img.src = "assets/images/letter-stamp0" + j + ".png";
+
+            app.letter.stamp['stamp0' + j] = img;
+        }
     },
 
     letter: {
         letterContext: {},
 
-        showLetter: function (){
+        stamp: {},
+
+        showLetter: function (stamp){
+            /**
+             *  @param   stamp   the id of stamp for this letter to show
+             * */
+
+            //  change stamp
+            $('.letter-stamp').attr('src', app.letter.stamp['stamp0' + stamp].src);
+
+            //  show letter
             $('.letter').fadeIn(0).removeClass('animated')
                 .addClass('animated');
 
             //  let paper blocks movement and show
-            $('.paper-block03, .paper-block04').fadeIn()
+            $('.paper-block01, .paper-block02').fadeIn()
                 .addClass('animated');
         },
 
@@ -174,31 +193,38 @@ var app = {
         },
 
         out: function (){
-            $('.letter').fadeOut(800, function (){
-                $('.letter').removeClass('animated');
-                $('.letter-postmark').removeClass('animated');
-            });
+            //  stamp hinge out
+            $('.letter-stamp').addClass('animated hinge');
 
-            //  out paper blocks
+            //  letter out
             setTimeout(function (){
-                $('.paper-block03').fadeOut(300);
+                $('.letter').fadeOut(800, function (){
+                    $('.letter').removeClass('animated');
+                    $('.letter-postmark').removeClass('animated');
+                    $('.letter-stamp').removeClass('animated hinge');
+                });
 
+                //  out paper blocks
                 setTimeout(function (){
-                    $('.paper-block04').fadeOut(300);
-                }, 100);
+                    $('.paper-block03').fadeOut(300);
 
-                $('.paper-block06').fadeOut(300);
+                    setTimeout(function (){
+                        $('.paper-block04').fadeOut(300);
+                    }, 100);
 
-                setTimeout(function (){
-                    $('.paper-block05').fadeOut(300);
-                }, 200);
+                    $('.paper-block06').fadeOut(300);
 
-                $('.paper-block07').fadeOut(300);
+                    setTimeout(function (){
+                        $('.paper-block05').fadeOut(300);
+                    }, 200);
 
-                setTimeout(function (){
-                    $('.paper-block08').fadeOut(300);
-                }, 100);
-            }, 1200);
+                    $('.paper-block07').fadeOut(300);
+
+                    setTimeout(function (){
+                        $('.paper-block08').fadeOut(300);
+                    }, 100);
+                }, 1200);
+            }, 2000);
         }
     },
 
@@ -246,7 +272,7 @@ var app = {
 
                 setTimeout(function () {
                     //  cancel paper blocks movement and hide it
-                    $('.paper-block03, .paper-block04').fadeOut()
+                    $('.paper-block01, .paper-block02').fadeOut()
                         .removeClass('animated');
                 }, 5300);
             }, 2000);
