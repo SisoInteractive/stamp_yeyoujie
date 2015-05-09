@@ -139,35 +139,35 @@ var app = {
                 setTimeout(function () {
                     scene02To07RecursionIndex++;
 
-                    //  letter in
-                    app.letter.showLetter(scene02To07RecursionIndex);
+                    /** checkout to next scene */
+                    if (scene02To07RecursionIndex < 8) {
+                        //  letter in
+                        app.letter.showLetter(scene02To07RecursionIndex);
 
-                    //  show postmark
-                    setTimeout(function (){
-                        //  show money first
-                        $('.letter-money').addClass('animated');
+                        //  show postmark
+                        setTimeout(function () {
+                            //  show money first
+                            $('.letter-money').addClass('animated');
 
-                        //  then show another letter parts
-                        setTimeout(function (){
-                            app.letter.showPostmark();
+                            //  then show another letter parts
+                            setTimeout(function () {
+                                app.letter.showPostmark();
 
-                            //  show paper machine
-                            app.papermachine.show(para);
+                                //  show paper machine
+                                app.papermachine.show(para);
 
-                            //  wipe animation begin
-                            setTimeout(function (){
-                                $('.letter-full-mask').addClass('animated');
-                            }, 4000);
+                                //  wipe animation begin
+                                setTimeout(function () {
+                                    $('.letter-full-mask').addClass('animated');
+                                }, 4000);
 
-                            /** checkout to next scene */
-                            if (scene02To07RecursionIndex < 8) {
                                 // into next scene
-                                setTimeout(function (){
+                                setTimeout(function () {
                                     scene02toScene07(app.letter.letterContext['para0' + scene02To07RecursionIndex]);
                                 }, 12000);
-                            }
-                        }, 2200);
-                    }, 2000);
+                            }, 2200);
+                        }, 2000);
+                    }
                 }, 2500);
             }, 1500);
         }
