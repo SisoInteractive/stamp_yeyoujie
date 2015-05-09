@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background: #070706;
+  background: #000;
   height: 100%;
 }
 
@@ -74,8 +74,8 @@ input {
 
 .radio-circle {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 0;
   width: 150%;
 }
 
@@ -265,8 +265,6 @@ input {
   bottom: 0;
   z-index: 2;
   width: 100%;
-  margin: 0 -5% 0 0;
-
 
   img {
     max-width: 100%;
@@ -415,17 +413,91 @@ input {
   .sentence {
     display: block;
     max-width: 68%;
-    margin: 20% auto 0 auto;
+    margin: 18% auto 0 auto;
   }
 }
 
 /* scene 02 */
 .scene02 {
-  width: 100%;
-  height: 100%;
   position: absolute;
   left: 0;
   top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+  .sentence {
+    display: block;
+    max-width: 68%;
+    margin: 18% auto 0 auto;
+  }
+
+  .flagWrap {
+    position: absolute;
+    top: 36%;
+    width: 100%;
+    text-align: center;
+  }
+
+  .flag {
+    overflow: hidden;
+    display: none;
+    position: relative;
+    width: 58.6%;
+    margin-left: 20%;
+    margin-top: -6%;
+    border-radius: 0 0 30% 30%;
+
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform-style: preserve3d;
+    -webkit-transform-origin: 0 250px;
+
+    -webkit-animation-name: wave;
+    -webkit-animation-duration: 8s;
+    -webkit-animation-timing-function: cubic-bezier(.16,.14,.82,.73);
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+
+  .flag-body {
+    max-width: 100%;
+  }
+
+  @-webkit-keyframes wave {
+    0% {
+      -webkit-transform: translate3d(0, 0, 0) rotateZ(1deg) rotateY(14deg);
+
+    }
+
+    20% {
+      -webkit-transform: translate3d(0, 0, 0) rotateZ(1deg) rotateY(0deg);
+    }
+
+    40% {
+      -webkit-transform: translate3d(0, 0, 0) rotateZ(2deg) rotateY(-14deg);
+    }
+
+    60% {
+      -webkit-transform: translate3d(0, 0, 0) rotateZ(1deg) rotateY(0deg);
+    }
+
+    80% {
+      -webkit-transform: translate3d(0, 0, 0) rotateZ(1deg) rotateY(6deg);
+    }
+
+    100% {
+      -webkit-transform: translate3d(0, 0, 0) rotateZ(1deg) rotateY(14deg);
+    }
+  }
+
+  .sentence-papermachine {
+    display: none;
+    max-width: 100%;
+    position: relative;
+    z-index: 2;
+  }
 }
 
 /* animation */
@@ -459,5 +531,15 @@ input {
   .letter {
     width: 72%;
     left: 14%;
+  }
+
+  .scene02 {
+    .sentence-final {
+      width: 80%;
+    }
+
+    .flagWrap {
+      top: 43%;
+    }
   }
 }

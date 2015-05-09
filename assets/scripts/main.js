@@ -8,10 +8,33 @@ setTimeout(function (){
 
 var app = {
     config: function (){
+        //  vertical center the paper
         var offsetTop = (parseInt($('body').height()) - parseInt($('#main').height())) / 2 + 'px';
-
         $('#main').css({'top': offsetTop});
+
+        //  calculate the wipe delay
+        var bodyHeightIsSmall = parseInt($('body').height()) <= 480;
+        calculateWipeDelay();
+
+        $('html, body').resize(function (){
+            calculateWipeDelay();
+        });
+
+        //  calculate wipe delay
+        function calculateWipeDelay (){
+            if (bodyHeightIsSmall) {
+                app.wipeDelay = 3000;
+            }
+
+            else {
+                app.wipeDelay = 4000;
+            }
+        }
+
     },
+
+    //  wipe delay
+    wipeDelay: 120000,
 
     create: function (){
         //  audio controller
@@ -94,23 +117,25 @@ var app = {
 
                     //  then show other letter parts
                     setTimeout(function (){
-                        //  show postmark
-                        app.letter.showPostmark();
-
                         //  show paper machine
                         app.papermachine.show(app.letter.letterContext.para01);
                         console.log(app.letter.letterContext);
 
                         //  wipe animation begin
-                        setTimeout(function (){
+                        setTimeout(function () {
                             $('.letter-full-mask').addClass('animated');
-                        }, 4000);
-                    }, 2200);
-                }, 1000);
 
-                //  into scene 3
+                            //  show postmark
+                            setTimeout(function () {
+                                app.letter.showPostmark();
+                            }, 5000);
+                        }, app.wipeDelay);
+                    }, 2000);
+                }, 600);
+
+                //  into scene 2
                 setTimeout(function (){
-                    scene02toScene07(app.letter.letterContext['para0' + 1]);
+                    scene02toScene07(app.letter.letterContext['para0' + (scene02To07RecursionIndex+1)]);
                 }, 12000);
             });
         }
@@ -139,6 +164,12 @@ var app = {
                 setTimeout(function () {
                     scene02To07RecursionIndex++;
 
+                    /** check currect index is pass the last scene */
+                    if (scene02To07RecursionIndex == 8) {
+                        sceneFinal();
+                        return;
+                    }
+
                     /** checkout to next scene */
                     if (scene02To07RecursionIndex < 8) {
                         //  letter in
@@ -151,29 +182,52 @@ var app = {
 
                             //  then show another letter parts
                             setTimeout(function () {
-                                app.letter.showPostmark();
-
                                 //  show paper machine
                                 app.papermachine.show(para);
 
                                 //  wipe animation begin
                                 setTimeout(function () {
                                     $('.letter-full-mask').addClass('animated');
-                                }, 4000);
 
+                                    //  show postmark
+                                    setTimeout(function () {
+                                        app.letter.showPostmark();
+                                    }, 5000);
+                                }, app.wipeDelay);
+
+                                /** check is the last scene */
                                 // into next scene
                                 setTimeout(function () {
-                                    scene02toScene07(app.letter.letterContext['para0' + scene02To07RecursionIndex]);
+                                    scene02toScene07(app.letter.letterContext['para0' + (scene02To07RecursionIndex+1)]);
                                 }, 12000);
-                            }, 2200);
-                        }, 2000);
+                            }, 2000);
+                        }, 600);
                     }
                 }, 2500);
             }, 1500);
         }
 
+        //  scene final
+        function sceneFinal(){
+            //  start scene
+            setTimeout(function (){
+                //  show sentence
+                $('.scene02 .sentence').addClass('animated');
 
-        //  start first scene
+                //  show machine
+                setTimeout(function () {
+                    $('.scene02 .sentence-papermachine').show();
+
+                    //  show final sentence
+                    setTimeout(function (){
+                        $('.scene02 .flag').fadeIn(800);
+                    }, 300);
+                }, 1300);
+            }, 500);
+        }
+
+
+        /**  start first scene */
         sceneStart();
 
         //  load images
@@ -340,7 +394,6 @@ var app = {
             this.machine.removeClass('animated')
                 .addClass('fastOut');
 
-
             //  remove fastOut
             setTimeout(function (){
                 that.machine.removeClass('fastOut');
@@ -351,7 +404,7 @@ var app = {
     start: function (){
         this.config();
 
-        //  start
+        //  start play
         this.create();
     }
 };
