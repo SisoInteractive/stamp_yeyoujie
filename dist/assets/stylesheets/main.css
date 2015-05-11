@@ -71,38 +71,13 @@ input {
 }
 .radio.animated {
   opacity: 1;
-  -ms-transform: rotate(-18deg);
-      transform: rotate(-18deg);
-  -webkit-transform: rotate(-18deg);
-  -ms-transform-origin: 59px 11px;
-      transform-origin: 59px 11px;
-  -webkit-transform-origin: 59px 11px;
-}
-.radio.animated .radio-handlebar {
-  -ms-transform: rotate(-18deg);
-      transform: rotate(-18deg);
-  -webkit-transform: rotate(-18deg);
-  -ms-transform-origin: 59px 11px;
-      transform-origin: 59px 11px;
-  -webkit-transform-origin: 59px 11px;
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out;
 }
 .radio.play .radio-handlebar {
-  -ms-transform: rotate(0deg);
-      transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  -ms-transform-origin: 50% 50% 0;
-      transform-origin: 50% 50% 0;
-  -webkit-transform-origin: 50% 50% 0;
-}
-.radio.play {
-  -webkit-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-          transform: rotate(0deg);
-  -webkit-transform-origin: 50% 50% 0;
-      -ms-transform-origin: 50% 50% 0;
-          transform-origin: 50% 50% 0;
+  top: 0;
+  right: 0;
+  -ms-transform: rotate(-50deg);
+      transform: rotate(-50deg);
+  -webkit-transform: rotate(-50deg);
 }
 .radio.play .radio-circle {
   -webkit-animation-name: rotateSelf;
@@ -168,30 +143,48 @@ input {
   top: 0;
   right: 0;
   width: 80%;
-  -ms-transform: rotate(-50deg);
-      transform: rotate(-50deg);
-  -webkit-transform: rotate(-50deg);
-  -ms-transform-origin: 50% 0;
-      transform-origin: 50% 0;
-  -webkit-transform-origin: 50% 0;
+  -ms-transform: rotate(-5deg);
+      transform: rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
+  -ms-transform-origin: 79.4% 21.9%;
+      transform-origin: 79.4% 21.9%;
+  -webkit-transform-origin: 79.4% 21.9%;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 /* letter */
 .letter {
   position: absolute;
-  top: 10%;
+  top: 0;
   left: 11%;
   z-index: 2;
   width: 78%;
-  -webkit-transform: translateY(110%);
-      -ms-transform: translateY(110%);
-          transform: translateY(110%);
-  -webkit-transition: -webkit-transform 1s ease-in;
-  transition: transform 1s ease-in;
+  -webkit-transform: translateY(-110%);
+      -ms-transform: translateY(-110%);
+          transform: translateY(-110%);
+  -webkit-transition: -webkit-transform 2s ease-out;
+  transition: transform 2s ease-out;
 }
 .letter.animated {
-  -webkit-transform: translateY(0%);
-      -ms-transform: translateY(0%);
-          transform: translateY(0%);
+  -webkit-transform: translateY(-43%);
+      -ms-transform: translateY(-43%);
+          transform: translateY(-43%);
+}
+.letter.cutting {
+  -webkit-transform: translateY(12%);
+      -ms-transform: translateY(12%);
+          transform: translateY(12%);
+}
+.letter.cutFinish {
+  -webkit-transform: translateY(130%);
+      -ms-transform: translateY(130%);
+          transform: translateY(130%);
+  -webkit-transition: -webkit-transform 1s ease-out;
+  transition: transform 1s ease-out;
+}
+.letter.back {
+  -webkit-transition: -webkit-transform 0s linear;
+  transition: transform 0s linear;
 }
 .letter-stamp {
   position: absolute;
@@ -201,20 +194,10 @@ input {
 }
 .letter-money {
   position: absolute;
-  top: 0;
+  top: -11%;
   left: 0;
   z-index: 1;
   width: 100%;
-  -webkit-transform: translateY(110%);
-      -ms-transform: translateY(110%);
-          transform: translateY(110%);
-  -webkit-transition: -webkit-transform 1.5s ease-out;
-  transition: transform 1.5s ease-out;
-}
-.letter-money.animated {
-  -webkit-transform: translateY(-55%);
-      -ms-transform: translateY(-55%);
-          transform: translateY(-55%);
 }
 .letter-postmark {
   position: absolute;
@@ -224,8 +207,8 @@ input {
   width: 52.6%;
 }
 .letter-postmark.a-gaizhang {
-  -webkit-transition: -webkit-transform 0.4s ease-in;
-  transition: transform 0.4s ease-in;
+  -webkit-transition: -webkit-transform 0.2s cubic-besier(0, 0, 0.63, 1);
+  transition: transform 0.2s cubic-besier(0, 0, 0.63, 1);
 }
 .letter-full {
   display: block;
@@ -277,8 +260,8 @@ input {
   -webkit-transform: translateY(100%);
       -ms-transform: translateY(100%);
           transform: translateY(100%);
-  -webkit-transition: -webkit-transform 6s linear;
-  transition: transform 6s linear;
+  -webkit-transition: -webkit-transform 1.5s ease-out;
+  transition: transform 1.5s ease-out;
 }
 .papermachine-body {
   max-width: 100.5%;
@@ -287,10 +270,6 @@ input {
   -webkit-transform: translateY(46.666667%);
       -ms-transform: translateY(46.666667%);
           transform: translateY(46.666667%);
-}
-.papermachine.fastOut {
-  -webkit-transition: -webkit-transform 3.5s ease-in;
-  transition: transform 3.5s ease-in;
 }
 .paper-block {
   position: absolute;
@@ -394,18 +373,12 @@ input {
             transform: translateX(-1px);
   }
 }
-/* scene 01 */
-.scene01 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.scene01 .sentence {
-  display: block;
+/* sentence */
+.sentence {
   max-width: 68%;
-  margin: 18% auto 0 auto;
+  position: absolute;
+  top: 18%;
+  left: 16%;
 }
 /* scene 02 */
 .scene02 {
@@ -424,7 +397,7 @@ input {
 }
 .scene02 .flagWrap {
   position: absolute;
-  top: 36%;
+  top: 61%;
   width: 100%;
   text-align: center;
 }

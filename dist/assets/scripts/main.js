@@ -68,9 +68,6 @@ var app = {
         // ------------------------------------------------
         function sceneStart (){
             setTimeout(function (){
-                //  show sentence
-                $('.scene01 .sentence').addClass('animated');
-
                 //  show and play radio
                 setTimeout(function (){
                     //  show
@@ -82,20 +79,19 @@ var app = {
                     }, 400);
                 }, 700);
 
-                //  into scene01
+                //  into sceneMain
                 setTimeout(function (){
-                    scene01();
+                    sceneMain();
                 }, 3000);
             }, 1000);
         }
 
-        //  this index is for recursion below in function scene02,
-        //  scene01 start the function scene02ToScene07's recursion
-        var scene02To07RecursionIndex = 1;  // scene is letter 1 now cause 1
+        //  this index recording the current scene number
+        var sceneIndex = 4;  // scene is letter 1 now cause 1
 
-        //  scene01
+        //  sceneMain
         // ------------------------------------------------
-        function scene01 (){
+        function sceneMain (){
             /**
              *  First sceneStart out,
              *  letter in,
@@ -103,45 +99,54 @@ var app = {
              *  paper machine in,
              *
              *  This scene still show 13 seconds then checkout to next scene
-             * */
-            //  scene01 out
-            $('.scene01').fadeOut(600, function (){
+            * */
+            //  show machine
+            app.papermachine.show();
 
-                //  letter in
-                app.letter.showLetter(1);
-
-                //  show postmark
-                setTimeout(function (){
-                    //  show money first
-                    $('.letter-money').addClass('animated');
-
-                    //  then show other letter parts
+            function sceneCheckout(sceneIndex) {
+                /** check current scene is passed the last scene */
+                if (sceneIndex <=7) {
+                    //  show letter
                     setTimeout(function (){
-                        //  show paper machine
-                        app.papermachine.show(app.letter.letterContext.para01);
-                        console.log(app.letter.letterContext);
+                        //  letter in
+                        app.letter.showLetter(sceneIndex);
 
-                        //  wipe animation begin
-                        setTimeout(function () {
-                            $('.letter-full-mask').addClass('animated');
+                        //  letter cutting
+                        setTimeout(function (){
+                            app.letter.cutLetter();
 
-                            //  show postmark
-                            setTimeout(function () {
-                                app.letter.showPostmark();
-                            }, 5000);
-                        }, app.wipeDelay);
-                    }, 2000);
-                }, 600);
+                            /** checkout to next scene */
+                            sceneIndex++;
+                            setTimeout(function (){
+                                sceneCheckout(sceneIndex);
 
-                //  into scene 2
-                setTimeout(function (){
-                    scene02toScene07(app.letter.letterContext['para0' + (scene02To07RecursionIndex+1)]);
-                }, 12000);
-            });
+                                //  reset finished letter class state
+                                setTimeout(function (){
+                                    var lastLetter = app.letter.currentLetter == 1 ? 2 : 1;
+                                    $('.letter0' + lastLetter).addClass('back')
+                                        .removeClass('animated cutting cutFinish')
+                                        .find('.letter-postmark').removeClass('animated');
+
+                                    setTimeout(function (){
+                                        $('.letter0' + lastLetter).removeClass('back')
+                                    }, 200);
+                                }, 1500);
+                            }, 1600);
+                        }, 3500);
+                    }, 4000);
+                } else {
+                    /** into final scene */
+                    setTimeout(function (){
+                        sceneFinal();
+                    }, 4500);
+                }
+            }
+
+            sceneCheckout(sceneIndex);
         }
 
         //  scene02 ~ scene07
-        //  this function will start in function scene01 inner,
+        //  this function will start in function sceneMain inner,
         //  then it recursion to checkout to next scene  from scene02
         //  to scene07(letter 2 to letter 7)
         //  @param  para        the para you want to show on letter
@@ -153,58 +158,16 @@ var app = {
              *  when paper machine outed, begin to show new letter
              *
              * */
-            //  out letter
-            app.letter.out();
-
-            //  out paper machine, then letter in
+            //  show letter
             setTimeout(function (){
-                app.papermachine.out();
-
                 //  letter in
-                setTimeout(function () {
-                    scene02To07RecursionIndex++;
+                app.letter.showLetter(sceneIndex);
 
-                    /** check currect index is pass the last scene */
-                    if (scene02To07RecursionIndex == 8) {
-                        sceneFinal();
-                        return;
-                    }
-
-                    /** checkout to next scene */
-                    if (scene02To07RecursionIndex < 8) {
-                        //  letter in
-                        app.letter.showLetter(scene02To07RecursionIndex);
-
-                        //  show postmark
-                        setTimeout(function () {
-                            //  show money first
-                            $('.letter-money').addClass('animated');
-
-                            //  then show another letter parts
-                            setTimeout(function () {
-                                //  show paper machine
-                                app.papermachine.show(para);
-
-                                //  wipe animation begin
-                                setTimeout(function () {
-                                    $('.letter-full-mask').addClass('animated');
-
-                                    //  show postmark
-                                    setTimeout(function () {
-                                        app.letter.showPostmark();
-                                    }, 5000);
-                                }, app.wipeDelay);
-
-                                /** check is the last scene */
-                                // into next scene
-                                setTimeout(function () {
-                                    scene02toScene07(app.letter.letterContext['para0' + (scene02To07RecursionIndex+1)]);
-                                }, 12000);
-                            }, 2000);
-                        }, 600);
-                    }
-                }, 2500);
-            }, 1500);
+                //  letter cutting
+                setTimeout(function (){
+                    app.letter.cutLetter();
+                }, 3500);
+            }, 4000);
         }
 
         //  scene final
@@ -225,10 +188,6 @@ var app = {
                 }, 1300);
             }, 500);
         }
-
-
-        /**  start first scene */
-        sceneStart();
 
         //  load images
         (function (){
@@ -256,6 +215,9 @@ var app = {
                 app.letter.money['money0' + z] = img;
             }
         })();
+
+        /**  start first scene */
+        sceneStart();
     },
 
     letter: {
@@ -264,6 +226,8 @@ var app = {
         stamp: {},
 
         money: {},
+
+        currentLetter: 1,
 
         showLetter: function (index){
             /**
@@ -274,18 +238,39 @@ var app = {
              *  @param   index   the id of stamp and money for this letter to show
              * */
 
+            //  current letter
+            var currentLetter = '.letter0' + app.letter.currentLetter;
+
             //  change stamp
-            $('.letter-stamp').attr('src', app.letter.stamp['stamp0' + index].src);
+            $(currentLetter + ' .letter-stamp').attr('src', app.letter.stamp['stamp0' + index].src);
 
             //  change money
-            $('.letter-money').attr('src', app.letter.money['money0' + index].src);
+            $(currentLetter + ' .letter-money').attr('src', app.letter.money['money0' + index].src);
 
             //  set letter mask and calculate mask height
-            $('.letter-mask').css({'height': $('.letter').height()});
+            $(currentLetter + ' .letter-mask').css({'height': $('.letter').height()});
 
             //  show letter
-            $('.letter').fadeIn(0).removeClass('animated')
+            $(currentLetter).fadeIn(0).removeClass('animated')
                 .addClass('animated');
+        },
+
+        cutLetter: function (sceneIndex){
+            //  cutting a half of letter
+            $('.letter0' + app.letter.currentLetter).addClass('cutting');
+
+            //  show post mark
+            setTimeout(function (){
+                app.letter.showPostmark(1);
+            }, 1900);
+
+            //  cutting all letter23
+            setTimeout(function (){
+                $('.letter0' + app.letter.currentLetter).addClass('cutFinish');
+
+                //  update current letter index
+                app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
+            }, 5600);
         },
 
         showPostmark: function (){
@@ -335,56 +320,10 @@ var app = {
     papermachine: {
         machine : $('.papermachine'),
 
-        show: function (para){
+        show: function (){
             var that = this;
             setTimeout(function (){
                 that.machine.addClass('animated');
-
-                //  show para
-                setTimeout(function (){
-                    $('.letter-context img').fadeIn(500)
-                        .attr('src', para.src);
-                }, 2500);
-
-                //  let paper blocks movement and show
-                setTimeout(function (){
-                    $('.paper-block01, .paper-block02').fadeIn()
-                        .addClass('animated');
-                }, 3200);
-
-                //  show paper blocks
-                //  show paper blocks 7 and 8
-                setTimeout(function (){
-                    $('.paper-block07').fadeIn(300);
-
-                    setTimeout(function (){
-                        $('.paper-block08').fadeIn(300);
-                    }, 100);
-                }, 2000);
-
-                //  show paper blocks 5 and 6
-                setTimeout(function (){
-                    $('.paper-block05').fadeIn(300);
-
-                    setTimeout(function (){
-                        $('.paper-block06').fadeIn(300);
-                    }, 100);
-                }, 3000);
-
-                //  show paper blocks 3 and 4
-                setTimeout(function (){
-                    $('.paper-block03').fadeIn(300);
-
-                    setTimeout(function (){
-                        $('.paper-block04').fadeIn(300);
-                    }, 100);
-                }, 5200);
-
-                setTimeout(function () {
-                    //  cancel paper blocks movement and hide it
-                    $('.paper-block01, .paper-block02').fadeOut()
-                        .removeClass('animated');
-                }, 5600);
             }, 2000);
         },
 

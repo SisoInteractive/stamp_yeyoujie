@@ -130,7 +130,7 @@ module.exports = function (grunt){
                 }
             },
             js: {
-                files: 'assets/script/**',
+                files: 'assets/scripts/**',
                 options: {
                     livereload: true
                 }

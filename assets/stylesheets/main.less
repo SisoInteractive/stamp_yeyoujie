@@ -81,30 +81,19 @@ input {
 
 .radio.animated {
   opacity: 1;
-  transform: rotate(-18deg);
-  -webkit-transform: rotate(-18deg);
-  transform-origin: 59px 11px;
-  -webkit-transform-origin: 59px 11px;
 }
 
 .radio.animated .radio-handlebar {
-  transform: rotate(-18deg);
-  -webkit-transform: rotate(-18deg);
-  transform-origin: 59px 11px;
-  -webkit-transform-origin: 59px 11px;
-  .transition(transform, 0.3s, ease-in-out);
 }
 
 .radio.play .radio-handlebar {
-  transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform-origin: 50% 50% 0;
-  -webkit-transform-origin: 50% 50% 0;
+  top: 0;
+  right: 0;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-50deg);
 }
 
 .radio.play {
-  transform: rotate(0deg);
-  transform-origin: 50% 50% 0;
 }
 
 .radio.play .radio-circle {
@@ -173,26 +162,40 @@ input {
   top: 0;
   right: 0;
   width: 80%;
-  transform: rotate(-50deg);
-  -webkit-transform: rotate(-50deg);
-  transform-origin: 50% 0;
-  -webkit-transform-origin: 50% 0;
+  transform: rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
+  transform-origin: 79.4% 21.9%;
+  -webkit-transform-origin: 79.4% 21.9%;
+  .transition(transform, 0.3s, ease-in-out);
 }
 
 /* letter */
 .letter {
   position: absolute;
-  top: 10%;
+  top: 0;
   left: 11%;
   z-index: 2;
   width: 78%;
-  transform: translateY(110%);
+  transform: translateY(-110%);
 
-  .transition(transform, 1s, ease-in);
+  .transition(transform, 2s, ease-out);
 }
 
 .letter.animated {
-  transform: translateY(0%);
+  transform: translateY(-43%);
+}
+
+.letter.cutting {
+  transform: translateY(12%);
+}
+
+.letter.cutFinish {
+  transform: translateY(130%);
+  .transition(transform, 1s, ease-out);
+}
+
+.letter.back {
+  .transition(transform, 0s, linear);
 }
 
 .letter-stamp {
@@ -204,16 +207,10 @@ input {
 
 .letter-money {
   position: absolute;
-  top: 0;
+  top: -11%;
   left: 0;
   z-index: 1;
   width: 100%;
-  transform: translateY(110%);
-  .transition(transform, 1.5s, ease-out);
-}
-
-.letter-money.animated {
-  transform: translateY(-55%);
 }
 
 .letter-postmark {
@@ -225,7 +222,7 @@ input {
 }
 
 .letter-postmark.a-gaizhang {
-  .transition(transform, .4s, ease-in);
+  .transition(transform, .2s, cubic-besier(0,0,.63,1));
 }
 
 .letter-full {
@@ -282,7 +279,7 @@ input {
   text-align: center;
   transform: translateY(100%);
 
-  .transition(transform, 6s, linear);
+  .transition(transform, 1.5s, ease-out);
 }
 
 .papermachine-body {
@@ -291,10 +288,6 @@ input {
 
 .papermachine.animated {
   transform: translateY(46.666667%);
-}
-
-.papermachine.fastOut {
-  .transition(transform, 3.5s, ease-in);
 }
 
 .paper-block {
@@ -401,20 +394,12 @@ input {
 }
 
 
-
-/* scene 01 */
-.scene01 {
+/* sentence */
+.sentence {
+  max-width: 68%;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  .sentence {
-    display: block;
-    max-width: 68%;
-    margin: 18% auto 0 auto;
-  }
+  top: 18%;
+  left: 16%;
 }
 
 /* scene 02 */
@@ -435,7 +420,7 @@ input {
 
   .flagWrap {
     position: absolute;
-    top: 36%;
+    top: 61%;
     width: 100%;
     text-align: center;
   }
@@ -508,6 +493,7 @@ input {
   -o-transition: @type @delay @timefunction;
   transition: @type @delay @timefunction;
 }
+
 .a-gaizhang {
   opacity: 0;
   transform: scale(3);
