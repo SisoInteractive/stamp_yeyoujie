@@ -262,6 +262,10 @@ var app = {
             //  current letter
             var currentLetter = '.letter0' + app.letter.currentLetter;
 
+            //  change para
+            $(currentLetter + ' .letter-context img').attr('src', app.letter.letterContext['para0' + index].src);
+
+
             //  change stamp
             $(currentLetter + ' .letter-stamp').attr('src', app.letter.stamp['stamp0' + index].src);
             $(currentLetter + ' .letter-stamp-sketch').attr('src', app.letter.stamp['stamp-sketch-0' + index].src);
