@@ -209,12 +209,12 @@ input {
 
   /* money cutting */
   .letter-money-mask {
-    .transition(height, .25s, ease-out);
+    .transition(height, .1s, ease-out);
   }
 
   /* stamp cutting */
   .letter-stamp-mask {
-    .transition(height, .25s, ease-out);
+    .transition(height, .1s, ease-out);
   }
 }
 
@@ -329,12 +329,16 @@ input {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 6;
   height: 100%;
+  z-index: 6;
   text-align: center;
   transform: translateY(100%);
 
   .transition(transform, 1.5s, ease-out);
+}
+
+.papermachine-wrap {
+  position: relative;
 }
 
 .papermachine-body {
@@ -343,6 +347,75 @@ input {
 
 .papermachine.animated {
   transform: translateY(46.666667%);
+}
+
+/* paper machine cutting */
+.papermachine.cutting {
+  /* paper machine animation */
+  .papermachine-wrap {
+    -webkit-animation: shakeMachine .3s infinite;
+  }
+  /* chilun animation */
+  .chilun {
+    -webkit-animation: chilun .5s infinite;
+  }
+
+}
+
+@-webkit-keyframes shakeMachine {
+  0% {
+    -webkit-transform: translateY(0);
+  }
+
+  30% {
+    -webkit-transform: translateY(-1px);
+  }
+
+  60% {
+    -webkit-transform: translateY(1px);
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+
+.chilun-wrap {
+  position: absolute;
+  top: 78.3333%;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+
+  .chilun {
+    position: absolute;
+    width: 1.38888%;
+//    height: 12%;
+    height: 5.333%;
+    background: url("../images/chilun.png") no-repeat center bottom;
+  }
+
+  .chilun01 { left: 23.148%; -webkit-animation-delay: 0s!important; }
+  .chilun02 { left: 32.87%; -webkit-animation-delay: .5s!important;; }
+  .chilun03 { left: 41%; -webkit-animation-delay: .3s!important;; }
+  .chilun04 { left: 51.24%; -webkit-animation-delay: 0s!important;; }
+  .chilun05 { left: 60.6%; -webkit-animation-delay: .5s!important;; }
+  .chilun06 { left: 68.7%; -webkit-animation-delay: 1s!important;; }
+  .chilun07 { left: 78.3%; -webkit-animation-delay: .3s!important;; }
+}
+
+@-webkit-keyframes chilun {
+  0% {
+    height: 5.33%;
+  }
+
+  50% {
+    height: 10%;
+  }
+
+  100% {
+    height: 5.33%;
+  }
 }
 
 .paper-block {

@@ -128,6 +128,7 @@ var app = {
             setTimeout(function (){
                 //  show sentence
                 $('.scene02 .sentence').addClass('animated');
+                app.papermachine.start();
 
                 //  show final sentence
                 setTimeout(function (){
@@ -236,6 +237,9 @@ var app = {
             //  cutting a half of letter
             $('.letter0' + app.letter.currentLetter).addClass('cutting');
 
+            //  begin machine animate
+            app.papermachine.start();
+
             //  show post mark
             setTimeout(function (){
                 app.letter.showPostmark(1);
@@ -249,6 +253,11 @@ var app = {
                     .find('.letter-stamp-mask').css({'height': 0});
 
                 currentLetter.find('.letter-money-mask').css({'height': 0});
+
+                //  stop machine animate
+                setTimeout(function (){
+                    app.papermachine.end();
+                }, 300);
 
                 //  update current letter index
                 app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
@@ -308,6 +317,14 @@ var app = {
             setTimeout(function (){
                 that.machine.addClass('animated');
             }, 2000);
+        },
+
+        start: function (){
+            $('.papermachine').addClass('cutting');
+        },
+
+        end: function (){
+            $('.papermachine').removeClass('cutting');
         },
 
         out: function (){
