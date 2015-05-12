@@ -60,7 +60,7 @@ var app = {
         }
 
         //  this index recording the current scene number
-        var sceneIndex = 1;  // scene is letter 1 now cause 1
+        var sceneIndex = 7;  // scene is letter 1 now cause 1
 
         //  sceneMain
         // ------------------------------------------------
@@ -126,13 +126,24 @@ var app = {
         function sceneFinal(){
             //  start scene
             setTimeout(function (){
-                //  show sentence
-                $('.flagWrap').show().addClass('animated bounceInDown');
+                //  show flag
+                $('.scene02').show().addClass('animated');
 
-                //  show fire
+                //  move flag to machine
                 setTimeout(function (){
-                    $('.fire').addClass('animated');
-                }, 600);
+                    $('.scene02').addClass('moveToMachine');
+
+                    //  show flag animation
+                    setTimeout(function (){
+                        $('.scene02').addClass('cutting');
+
+                        //  show fire
+                        setTimeout(function (){
+                            $('.fire').addClass('animated');
+                            $('.papermachine').addClass('cutting');
+                        }, 600);
+                    }, 2000);
+                }, 2500);
             }, 900);
         }
 
@@ -177,6 +188,8 @@ var app = {
         //  init in letter property's showLetter method
         isInitFire: false,
 
+        isReady: false,
+
         images: [],
 
         curFrameIndex: 0,
@@ -199,11 +212,17 @@ var app = {
                     loadedImages++;
 
                     /**  images loading monitor */
-                    if (loadedImages == imagesAmount) that.draw(that.curFrameIndex);
+                    if (loadedImages/imagesAmount >= 0.7 && that.isReady == false) {
+                        console.log('canvas fire image loaded complete..');
+                        that.draw(that.curFrameIndex);
+                        that.isReady == true;
+                    }
                 };
 
                 that.images.push(img);
             }
+
+            console.log('canvas fire image load start..');
         },
 
         draw: function (){
@@ -412,6 +431,7 @@ var app = {
     },
 
     start: function (){
+        //  init program
         this.init();
 
         //  start play
@@ -424,22 +444,3 @@ $(function (){
     app.start();
     console.log('program start...............');
 });
-
-var name = 'aotu';
-var foo = {
-    name: 'sam',
-    sayName: function () {
-        console.log("最外层的this:", this.name);
-
-        function name() {
-            console.log('function内的this:', this.name());
-        }
-        name();
-
-        var that = this;
-        function say(){
-            console.log(that.name);
-        }
-        say();
-    }
-};
