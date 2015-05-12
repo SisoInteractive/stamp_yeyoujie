@@ -198,12 +198,12 @@ input {
   transition: height 0.5s ease-out;
 }
 .letter.cutFinish .letter-money-mask {
-  -webkit-transition: height 0.2s ease-out;
-  transition: height 0.2s ease-out;
+  -webkit-transition: height 0.1s ease-out;
+  transition: height 0.1s ease-out;
 }
 .letter.cutFinish .letter-stamp-mask {
-  -webkit-transition: height 0.2s ease-out;
-  transition: height 0.2s ease-out;
+  -webkit-transition: height 0.1s ease-out;
+  transition: height 0.1s ease-out;
 }
 .letter.back {
   -webkit-transition: -webkit-transform 0s linear;
@@ -229,7 +229,7 @@ input {
   position: absolute;
   top: -9%;
   left: 0;
-  z-index: 14;
+  z-index: 6;
   width: 100%;
 }
 .letter-money-mask {
@@ -237,7 +237,7 @@ input {
   position: absolute;
   top: -11%;
   left: 0;
-  z-index: 15;
+  z-index: 7;
   width: 100%;
   transition-delay: .5s;
   -webkit-transition-delay: .5s;
