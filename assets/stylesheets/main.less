@@ -91,8 +91,8 @@ input {
 .radio.play .radio-handlebar {
   top: 0;
   right: 0;
-  transform: rotate(-50deg);
-  -webkit-transform: rotate(-50deg);
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 .radio.play {
@@ -339,6 +339,20 @@ input {
 
 .papermachine-wrap {
   position: relative;
+
+  .fire {
+    position: absolute;
+    top: -26.333%;
+    right: 26%;
+    z-index: 25;
+    opacity: 0;
+  }
+
+  /* fire animation */
+  .fire.animated {
+    opacity: 1;
+    .transition(opacity, .1s, ease-out);
+  }
 }
 
 .papermachine-body {
@@ -353,11 +367,12 @@ input {
 .papermachine.cutting {
   /* paper machine animation */
   .papermachine-wrap {
-    -webkit-animation: shakeMachine .3s infinite;
+    -webkit-animation: shakeMachine .25s infinite;
   }
+
   /* chilun animation */
   .chilun {
-    -webkit-animation: chilun .5s infinite;
+//    -webkit-animation: chilun .5s infinite;
   }
 
 }
@@ -534,28 +549,21 @@ input {
 .scene02 {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 9.6%;
   z-index: 2;
   width: 100%;
   height: 100%;
   text-align: center;
 
-  .sentence {
-    display: block;
-    max-width: 68%;
-    margin: 18% auto 0 auto;
-  }
-
   .flagWrap {
+    display: none;
     position: absolute;
-    top: 61%;
     width: 100%;
     text-align: center;
   }
 
   .flag {
     overflow: hidden;
-    display: none;
     position: relative;
     width: 58.6%;
     margin-left: 20%;
@@ -603,13 +611,6 @@ input {
     100% {
       -webkit-transform: translate3d(0, 0, 0) rotateZ(1deg) rotateY(14deg);
     }
-  }
-
-  .sentence-papermachine {
-    display: none;
-    max-width: 100%;
-    position: relative;
-    z-index: 2;
   }
 }
 

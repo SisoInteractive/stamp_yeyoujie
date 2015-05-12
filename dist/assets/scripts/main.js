@@ -3,7 +3,7 @@
 "use strict";
 
 var app = {
-    config: function (){
+    init: function (){
         //  vertical center the paper
         var offsetTop = (parseInt($('body').height()) - parseInt($('#main').height())) / 2 + 'px';
         $('#main').css({'top': offsetTop});
@@ -324,7 +324,7 @@ var app = {
     },
 
     start: function (){
-        this.config();
+        this.init();
 
         //  start play
         this.create();
