@@ -60,7 +60,7 @@ var app = {
         }
 
         //  this index recording the current scene number
-        var sceneIndex = 4;  // scene is letter 1 now cause 1
+        var sceneIndex = 1;  // scene is letter 1 now cause 1
 
         //  sceneMain
         // ------------------------------------------------
@@ -127,13 +127,13 @@ var app = {
             //  start scene
             setTimeout(function (){
                 //  show sentence
-                $('.scene02 .sentence').addClass('animated');
+                $('.flagWrap').show().addClass('animated bounceInDown');
 
-                //  show final sentence
+                //  show fire
                 setTimeout(function (){
-                    $('.scene02 .flag').fadeIn(1200);
+                    $('.fire').addClass('animated');
                 }, 600);
-            }, 500);
+            }, 900);
         }
 
         //  load images
@@ -173,6 +173,68 @@ var app = {
         sceneStart();
     },
 
+    fire: {
+        //  init in letter property's showLetter method
+        isInitFire: false,
+
+        images: [],
+
+        curFrameIndex: 0,
+
+        init: function (){
+            //  set canvas size
+            $('.fire').attr('width', $('.papermachine-wrap').width()*0.2055)
+                .attr('height', $('.papermachine-wrap').height()*0.78);
+
+
+            var that = this,
+                imagesAmount = 6,
+                loadedImages = 0;
+
+            //  create fire image
+            for (var i=1; i<=imagesAmount; i++) {
+                var img = new Image();
+                img.src = 'assets/images/fire0' + i + '.png';
+                img.onload = function (){
+                    loadedImages++;
+
+                    /**  images loading monitor */
+                    if (loadedImages == imagesAmount) that.draw(that.curFrameIndex);
+                };
+
+                that.images.push(img);
+            }
+        },
+
+        draw: function (){
+            var that = this,
+                paper = document.getElementById('fire'),
+                paperWidth = paper.width,
+                paperHeight = paper.height,
+                pencil = paper.getContext('2d');
+
+            /** check is current frame is not the end frame */
+            if (that.curFrameIndex < that.images.length) {
+                pencil.clearRect(0, 0, paperWidth, paperHeight);
+                pencil.drawImage(that.images[that.curFrameIndex], 0, 0, paperWidth, paperHeight);
+
+                //  update current image index
+                that.curFrameIndex++;
+
+                //  draw next frame
+                setTimeout(function (){
+                    that.draw(that.curFrameIndex)
+                }, 38);
+            } else {
+                /** reset frame to first frame and draw */
+                that.curFrameIndex = 0;
+                setTimeout(function (){
+                    that.draw(that.curFrameIndex);
+                }, 38);
+            }
+        }
+    },
+
     letter: {
         letterContext: {},
 
@@ -190,6 +252,12 @@ var app = {
              *  set paper blocks
              *  @param   index   the id of stamp and money for this letter to show
              * */
+
+            //  if not init fire yet, init it
+            if (app.fire.isInitFire == false) {
+                app.fire.init();
+                app.fire.isInitFire = true;
+            }
 
             //  current letter
             var currentLetter = '.letter0' + app.letter.currentLetter;
@@ -236,6 +304,9 @@ var app = {
             //  cutting a half of letter
             $('.letter0' + app.letter.currentLetter).addClass('cutting');
 
+            //  begin machine animate
+            app.papermachine.start();
+
             //  show post mark
             setTimeout(function (){
                 app.letter.showPostmark(1);
@@ -249,6 +320,11 @@ var app = {
                     .find('.letter-stamp-mask').css({'height': 0});
 
                 currentLetter.find('.letter-money-mask').css({'height': 0});
+
+                //  stop machine animate
+                setTimeout(function (){
+                    app.papermachine.end();
+                }, 300);
 
                 //  update current letter index
                 app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
@@ -310,6 +386,14 @@ var app = {
             }, 2000);
         },
 
+        start: function (){
+            $('.papermachine').addClass('cutting');
+        },
+
+        end: function (){
+            $('.papermachine').removeClass('cutting');
+        },
+
         out: function (){
             var that = this;
 
@@ -336,3 +420,22 @@ $(function (){
     app.start();
     console.log('program start...............');
 });
+
+var name = 'aotu';
+var foo = {
+    name: 'sam',
+    sayName: function () {
+        console.log("最外层的this:", this.name);
+
+        function name() {
+            console.log('function内的this:', this.name());
+        }
+        name();
+
+        var that = this;
+        function say(){
+            console.log(that.name);
+        }
+        say();
+    }
+};
