@@ -6,7 +6,11 @@ var app = {
     init: function (){
         //  vertical center the paper
         var offsetTop = (parseInt($('body').height()) - parseInt($('#main').height())) / 2 + 'px';
+        $('body').css({'height': $('#main').height()});
         $('#main').css({'top': offsetTop});
+
+        //  disable touch event to limit ios browser scroll
+        document.body.addEventListener('touchmove', function(e){ e.preventDefault(); }); document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
     },
 
     create: function (){
