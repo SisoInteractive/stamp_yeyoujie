@@ -80,7 +80,7 @@ var app = {
         }
 
         //  this index recording the current scene number
-        var sceneIndex = 7;  // scene is letter 1 now cause 1
+        var sceneIndex = 1;  // scene is letter 1 now cause 1
 
         //  sceneMain
         // ------------------------------------------------
@@ -329,7 +329,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneMain();
+        sceneLoading();
     },
 
     fire: {
