@@ -9,9 +9,7 @@ var app = {
         $('#main').css({'top': offsetTop});
 
         //  disable touch event to limit ios browser scroll
-        var bodyDom = document.getElementsByTagName('body')[0];
-        bodyDom.addEventListener('touchmove', function(e){ return false; });
-        bodyDom.addEventListener('touchstart', function(e){ return false; });
+        document.documentElement.addEventListener('touchmove', function(e){ return false; });
     },
 
     create: function (){
@@ -99,6 +97,9 @@ var app = {
             * */
             //  show machine
             app.papermachine.show();
+
+            //  turn on letter display
+            $('.letter').show();
 
             //  instance of hammer
             var hammer = new Hammer(document.getElementById('main'));
