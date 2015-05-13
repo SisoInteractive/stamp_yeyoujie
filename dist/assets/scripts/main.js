@@ -37,26 +37,45 @@ var app = {
             }
         });
 
+        //  scene loading
+        // ------------------------------------------------
+        var imageAmounts = 35,
+            loadedImageAmounts = 0;
+
+        function sceneLoading (){
+            //  into loading animation
+            setTimeout(function (){
+                $('.loading').addClass('animated');
+            }, 1000);
+        }
+
+
         //  scene start
         // ------------------------------------------------
         function sceneStart (){
-            setTimeout(function (){
-                //  show and play radio
+            $('.loading').fadeOut(900, function (){
+                $('.sentence').show();
                 setTimeout(function (){
-                    //  show
-                    $('.radio').addClass('animated bounceIn');
 
-                    //  play
+                    //  show and play radio
                     setTimeout(function (){
-                        audio.play();
-                    }, 400);
-                }, 700);
+                        //  show
+                        $('.radio').addClass('animated bounceIn');
 
-                //  into sceneMain
-                setTimeout(function (){
-                    sceneMain();
-                }, 3000);
-            }, 1000);
+                        //  play
+                        setTimeout(function (){
+                            audio.play();
+                        }, 400);
+                    }, 700);
+
+                    //  into sceneMain
+                    setTimeout(function (){
+                        sceneMain();
+                    }, 3000);
+                }, 1600);
+            });
+
+            $('.start').fadeOut(900);
         }
 
         //  this index recording the current scene number
@@ -79,43 +98,73 @@ var app = {
             function sceneCheckout(sceneIndex) {
                 /** check current scene is passed the last scene */
                 if (sceneIndex <=7) {
-                    //  show letter
-                    setTimeout(function (){
+                    var canClicked = false;
+                    //  show first letter width delay
+
+                    if (sceneIndex == 1) {
+                        setTimeout(function (){
+                            //  letter in
+                            app.letter.showLetter(sceneIndex);
+
+                            //  show letter cutting button
+                            setTimeout(function (){
+                                $('.scene-arrow').fadeIn(900);
+                                canClicked = true;
+                            }, 1300);
+                        }, 4000);
+                    } else {
                         //  letter in
                         app.letter.showLetter(sceneIndex);
 
-                        //  letter cutting
+                        //  show letter cutting button
                         setTimeout(function (){
-                            app.letter.cutLetter();
-
-                            /** checkout to next scene */
-                            sceneIndex++;
-                            setTimeout(function (){
-                                sceneCheckout(sceneIndex);
-
-                                //  reset finished letter class state
-                                setTimeout(function (){
-                                    var lastLetterId = app.letter.currentLetter == 1 ? 2 : 1,
-                                        lastLetter = $('.letter0' + lastLetterId);
-
-                                    lastLetter.addClass('back')
-                                        .removeClass('animated cutting cutFinish')
-                                        .find('.letter-postmark').removeClass('animated');
-                                    lastLetter.find('.letter-stamp-mask').css('height', lastLetter.find('.letter-stamp-mask').attr('data-height'))
-                                    lastLetter.find('.letter-money-mask').css('height', lastLetter.find('.letter-money-mask').attr('data-height'));
-
-                                    setTimeout(function (){
-                                        lastLetter.removeClass('back')
-                                    }, 200);
-                                }, 6600);
-                            }, 1600);
-                        }, 3500);
-                    }, 4000);
+                            $('.scene-arrow').fadeIn(900);
+                            canClicked = true;
+                        }, 1300);
+                    }
                 } else {
                     /** into final scene */
                     setTimeout(function (){
                         sceneFinal();
-                    }, 4500);
+                    }, 900);
+                }
+
+                //  bind letter cutting
+                $('#main').click(function (){
+                    $('.scene-arrow').hide();
+
+                    //  cutting letter
+                    if (canClicked == true ) {
+                        cutEmail();
+                        canClicked = false;
+                    }
+                });
+
+                //  letter cutting
+                function cutEmail (){
+                    app.letter.cutLetter();
+
+                    /** checkout to next scene */
+                    sceneIndex++;
+                    setTimeout(function (){
+                        sceneCheckout(sceneIndex);
+
+                        //  reset finished letter class state
+                        setTimeout(function (){
+                            var lastLetterId = app.letter.currentLetter == 1 ? 2 : 1,
+                                lastLetter = $('.letter0' + lastLetterId);
+
+                            lastLetter.addClass('back')
+                                .removeClass('animated cutting cutFinish')
+                                .find('.letter-postmark').removeClass('animated');
+                            lastLetter.find('.letter-stamp-mask').css('height', lastLetter.find('.letter-stamp-mask').attr('data-height'));
+                            lastLetter.find('.letter-money-mask').css('height', lastLetter.find('.letter-money-mask').attr('data-height'));
+
+                            setTimeout(function (){
+                                lastLetter.removeClass('back')
+                            }, 200);
+                        }, 1000);
+                    }, 8000);
                 }
             }
 
@@ -126,13 +175,24 @@ var app = {
         function sceneFinal(){
             //  start scene
             setTimeout(function (){
-                //  show sentence
-                $('.flagWrap').show().addClass('animated bounceInDown');
+                //  show flag
+                $('.scene02').show().addClass('animated');
 
-                //  show fire
+                //  move flag to machine
                 setTimeout(function (){
-                    $('.fire').addClass('animated');
-                }, 600);
+                    $('.scene02').addClass('moveToMachine');
+
+                    //  show flag animation
+                    setTimeout(function (){
+                        $('.scene02').addClass('cutting');
+
+                        //  show fire
+                        setTimeout(function (){
+                            $('.fire').addClass('animated');
+                            $('.papermachine').addClass('cutting');
+                        }, 600);
+                    }, 2000);
+                }, 2500);
             }, 900);
         }
 
@@ -143,6 +203,12 @@ var app = {
                 var img = new Image();
                 img.src = "assets/images/para0" + i + ".png";
 
+                //  binding asset load monitor
+                img.onload = function (){
+                    loadedImageAmounts++;
+                    assetsLoadMonitor(loadedImageAmounts);
+                };
+
                 app.letter.letterContext['para0' + i] = img;
             }
 
@@ -152,6 +218,16 @@ var app = {
                     img2 = new Image();
                 img.src = "assets/images/letter-stamp0" + j + ".png";
                 img2.src = "assets/images/letter-stamp-sketch-0" + j + ".png";
+
+                //  binding asset load monitor
+                img.onload = function (){
+                    loadedImageAmounts++;
+                    assetsLoadMonitor(loadedImageAmounts);
+                };
+                img2.onload = function (){
+                    loadedImageAmounts++;
+                    assetsLoadMonitor(loadedImageAmounts);
+                };
 
                 app.letter.stamp['stamp0' + j] = img;
                 app.letter.stamp['stamp-sketch-0' + j] = img2;
@@ -164,18 +240,76 @@ var app = {
                 img.src = "assets/images/letter-money0" + z + ".png";
                 img2.src = "assets/images/letter-money-sketch-0" + z + ".png";
 
+                //  binding asset load monitor
+                img.onload = function (){
+                    loadedImageAmounts++;
+                    assetsLoadMonitor(loadedImageAmounts);
+                };
+                img2.onload = function (){
+                    loadedImageAmounts++;
+                    assetsLoadMonitor(loadedImageAmounts);
+                };
+
                 app.letter.money['money0' + z] = img;
                 app.letter.money['money-sketch-0' + z] = img2;
             }
         })();
 
+        /**
+         *   resource loaded monitor
+         *   for assets loaded progress
+         * */
+
+        var loaded0To28 = false, //rate of 35p, 10p loaded
+            loaded29To43 = false, //rate of 35p, 15p loaded
+            loaded44To72 = false, //rate of 35p, 25p loaded
+            loaded73To86 = false, //rate of 35p, 30p loaded
+            loaded87To100 = false; //rate of 35p, 35p loaded
+
+        function assetsLoadMonitor(process) {
+            var textDom = $('.loading-text'),
+                rate = loadedImageAmounts / imageAmounts;
+
+            //rate of 35p, 10p loaded
+            if (rate > 0.22 && rate <= 0.28 && loaded0To28 == false) {
+                loaded0To28 = true;
+                textDom.text('音乐准备中..');
+            }
+
+            //rate of 35p, 15p loaded
+            if (rate > 0.35 && rate <= 0.43 && loaded29To43 == false) {
+                loaded29To43 = true;
+                textDom.text('爆米花准备完毕..');
+            }
+
+            //rate of 35p, 25p loaded
+            if (rate > 0.60 && rate <= 0.72 && loaded44To72 == false) {
+                loaded44To72 = true;
+                textDom.text('纸巾准备完毕..');
+            }
+
+            //rate of 35p, 30p loaded
+            if (rate > 0.75 && rate <= 0.86 && loaded73To86 == false) {
+                loaded73To86 = true;
+                textDom.text('好故事即将开始..');
+
+                //  show start button
+                $('.start').fadeIn();
+                $('.start button').click(function (){
+                    sceneStart();
+                });
+            }
+        }
+
         /**  start first scene */
-        sceneStart();
+        sceneLoading();
     },
 
     fire: {
         //  init in letter property's showLetter method
         isInitFire: false,
+
+        isReady: false,
 
         images: [],
 
@@ -199,11 +333,17 @@ var app = {
                     loadedImages++;
 
                     /**  images loading monitor */
-                    if (loadedImages == imagesAmount) that.draw(that.curFrameIndex);
+                    if (loadedImages/imagesAmount >= 0.7 && that.isReady == false) {
+                        console.log('canvas fire image loaded complete..');
+                        that.draw(that.curFrameIndex);
+                        that.isReady = true;
+                    }
                 };
 
                 that.images.push(img);
             }
+
+            console.log('canvas fire image load start..');
         },
 
         draw: function (){
@@ -224,13 +364,11 @@ var app = {
                 //  draw next frame
                 setTimeout(function (){
                     that.draw(that.curFrameIndex)
-                }, 38);
+                }, 16);
             } else {
                 /** reset frame to first frame and draw */
                 that.curFrameIndex = 0;
-                setTimeout(function (){
-                    that.draw(that.curFrameIndex);
-                }, 38);
+                that.draw();
             }
         }
     },
@@ -305,6 +443,8 @@ var app = {
         },
 
         cutLetter: function (sceneIndex){
+            // @duration 5600ms
+
             //  cutting a half of letter
             $('.letter0' + app.letter.currentLetter).addClass('cutting');
 
@@ -332,7 +472,7 @@ var app = {
 
                 //  update current letter index
                 app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
-            }, 5600);
+            }, 7800);
         },
 
         showPostmark: function (){
@@ -412,6 +552,7 @@ var app = {
     },
 
     start: function (){
+        //  init program
         this.init();
 
         //  start play
@@ -424,22 +565,3 @@ $(function (){
     app.start();
     console.log('program start...............');
 });
-
-var name = 'aotu';
-var foo = {
-    name: 'sam',
-    sayName: function () {
-        console.log("最外层的this:", this.name);
-
-        function name() {
-            console.log('function内的this:', this.name());
-        }
-        name();
-
-        var that = this;
-        function say(){
-            console.log(that.name);
-        }
-        say();
-    }
-};
