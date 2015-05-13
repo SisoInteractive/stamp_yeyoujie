@@ -441,12 +441,21 @@ var app = {
              *  set paper blocks
              *  @param   index   the id of stamp and money for this letter to show
              * */
-
             //  if not init fire yet, init it
             if (app.fire.isInitFire == false) {
                 app.fire.init();
                 app.fire.isInitFire = true;
             }
+
+            //  play scene audio
+            $('#scene01')[0].pause();
+            $('#scene02')[0].pause();
+            $('#scene03')[0].pause();
+            $('#scene04')[0].pause();
+            $('#scene05')[0].pause();
+            $('#scene06')[0].pause();
+            $('#scene07')[0].pause();
+            $('#scene0' + app.letter.currentLetter)[0].play();
 
             //  current letter
             var currentLetter = '.letter0' + app.letter.currentLetter;
