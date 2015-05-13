@@ -79,7 +79,7 @@ var app = {
         }
 
         //  this index recording the current scene number
-        var sceneIndex = 1;  // scene is letter 1 now cause 1
+        var sceneIndex = 7;  // scene is letter 1 now cause 1
 
         //  sceneMain
         // ------------------------------------------------
@@ -315,7 +315,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneLoading();
+        sceneMain();
     },
 
     fire: {
@@ -330,8 +330,8 @@ var app = {
 
         init: function (){
             //  set canvas size
-            $('.fire').attr('width', $('.papermachine-wrap').width()*0.2055)
-                .attr('height', $('.papermachine-wrap').height()*0.78);
+            $('.fire').attr('width', $('.papermachine-wrap').width()*0.1)
+                .attr('height', $('.papermachine-wrap').height()*0.49);
 
 
             var that = this,
@@ -582,4 +582,6 @@ $(function (){
     // init app
     app.start();
     console.log('program start...............');
+
+    $('.loading, .start').hide();
 });
