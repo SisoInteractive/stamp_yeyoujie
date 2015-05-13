@@ -37,6 +37,8 @@ input {
   height: 100%;
   background: url("../images/bg.jpg");
   background-size: cover;
+  position: relative;
+  z-index: -2;
 }
 /* loading */
 .loading {
@@ -220,7 +222,7 @@ input {
   top: 10px;
   right: 8px;
   width: 12%;
-  z-index: 100;
+  z-index: 10;
   opacity: 0;
   cursor: pointer;
 }
@@ -242,9 +244,9 @@ input {
 .radio.play .radio-handlebar {
   top: 0;
   right: 0;
-  -ms-transform: rotate(-45deg);
-      transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(33deg);
+      transform: rotate(33deg);
+  -webkit-transform: rotate(33deg);
 }
 .radio.play .radio-circle {
   -webkit-animation-name: rotateSelf;
@@ -360,7 +362,7 @@ input {
   position: absolute;
   top: 0;
   left: 11%;
-  z-index: 2;
+  z-index: 20;
   width: 78%;
   -webkit-transform: translateY(-110%);
       -ms-transform: translateY(-110%);
@@ -495,14 +497,15 @@ input {
   max-width: 100%;
 }
 /* paper machine */
-.papermachine {
+.papermachine,
+.papermachine-body-down {
   display: none;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 100%;
-  z-index: 6;
+  z-index: 25;
   text-align: center;
   -webkit-transform: translateY(100%);
       -ms-transform: translateY(100%);
@@ -512,27 +515,63 @@ input {
 }
 .papermachine-wrap {
   position: relative;
+  /* fire */
   /* fire animation */
   /* fire animation final scene */
+  /* light */
 }
 .papermachine-wrap .fire {
   position: absolute;
-  top: -26.333%;
+  top: -16.333%;
   right: 16%;
   z-index: 25;
   opacity: 0;
+}
+.papermachine-wrap .fireBig {
+  right: 0;
+  left: 10%;
+  top: -25.333%;
+  -webkit-transform: rotateZ(-70deg);
+          transform: rotateZ(-70deg);
 }
 .papermachine-wrap .fire.animated {
   opacity: 1;
   -webkit-transition: opacity 0.1s ease-out;
   transition: opacity 0.1s ease-out;
 }
-.papermachine-wrap .fire.finalSceneFire {
+.papermachine-wrap .fireBig.animated {
+  opacity: .95;
+}
+.papermachine-wrap .fireSmall.finalSceneFire {
   top: -110%;
   right: 20%;
 }
-.papermachine-body {
+.papermachine-wrap .fireBig.finalSceneFire {
+  top: -110%;
+  right: 0;
+  left: 20%;
+}
+.papermachine-wrap .pamerpachine-light {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 2px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+.machine {
   max-width: 100.5%;
+}
+.papermachine-body-up {
+  z-index: 30;
+}
+.papermachine-body-down {
+  z-index: 10;
 }
 .papermachine.animated {
   -webkit-transform: translateY(46.666667%);
@@ -543,9 +582,6 @@ input {
 .papermachine.cutting {
   /* paper machine animation */
   /* chilun animation */
-}
-.papermachine.cutting .papermachine-wrap {
-  -webkit-animation: shakeMachine .25s infinite;
 }
 .papermachine.cutting .chilun {
   -webkit-animation: chilun .5s infinite;

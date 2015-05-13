@@ -512,6 +512,13 @@ input {
     opacity: 0;
   }
 
+  .fireBig {
+    right: 0;
+    left: 10%;
+    top: -25.333%;
+    transform: rotateZ(-70deg);
+  }
+
   /* fire animation */
   .fire.animated {
     opacity: 1;
@@ -519,64 +526,36 @@ input {
 //    -webkit-animation: fireFlash 8s infinite;
   }
 
-  /* fire animation final scene */
-  .fire.finalSceneFire {
-    top: -110%;
-    right: 20%;
+  .fireBig.animated {
+    opacity: .95;
   }
 
-  @-webkit-keyframes fireFlash {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
+  /* fire animation final scene */
+  .fireSmall.finalSceneFire {
+     top: -110%;
+     right: 20%;
+   }
 
-    3.4% {
-      opacity: 1;
-    }
+  .fireBig.finalSceneFire {
+    top: -110%;
+    right: 0;
+    left: 20%;
+  }
 
-    3.5% {
-      opacity: .1;
-    }
+  /* light */
+  .pamerpachine-light {
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    bottom: 2px;
+    height: 1px;
+    background: rgba(255,255,255,.8);
 
-    3.6% {
-      opacity: 1;
-    }
-
-    25% {
-      transform: translate3d(-80%, 0, 0);
-    }
-
-    45% {
-      transform: translate3d(-80%, 0, 0);
-    }
-
-    55% {
-      transform: translate3d(-230%, 0, 0);
-    }
-
-    60% {
-      transform: translate3d(-230%, 0, 0);
-    }
-
-    65% {
-      transform: translate3d(-80%, 0, 0);
-    }
-
-    70% {
-      transform: translate3d(-20%, 0, 0);
-    }
-
-    80% {
-      transform: translate3d(-20%, 0, 0);
-    }
-
-    85% {
-      transform: translate3d(10%, 0, 0);
-    }
-
-    100% {
-      transform: translate3d(0, 0, 0);
-    }
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
   }
 }
 

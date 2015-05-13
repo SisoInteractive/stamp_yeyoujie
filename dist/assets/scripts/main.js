@@ -330,8 +330,13 @@ var app = {
 
         init: function (){
             //  set canvas size
-            $('.fire').attr('width', $('.papermachine-wrap').width()*0.2055)
-                .attr('height', $('.papermachine-wrap').height()*0.78);
+            var baseWidth = $('.papermachine-wrap').width()*0.1,
+                baseHeight = $('.papermachine-wrap').height()*0.49;
+
+            $('.fireSmall').attr('width', baseWidth)
+                .attr('height', baseHeight);
+            $('.fireBig').attr('width', baseWidth*1.5)
+                .attr('height', baseHeight*1.5);
 
 
             var that = this,
@@ -364,12 +369,20 @@ var app = {
                 paper = document.getElementById('fire'),
                 paperWidth = paper.width,
                 paperHeight = paper.height,
-                pencil = paper.getContext('2d');
+                pencil = paper.getContext('2d'),
+
+                paper02 = document.getElementById('fireBig'),
+                paperWidth02 = paper02.width,
+                paperHeight02 = paper02.height,
+                pencil02 = paper02.getContext('2d');
 
             /** check is current frame is not the end frame */
             if (that.curFrameIndex < that.images.length) {
                 pencil.clearRect(0, 0, paperWidth, paperHeight);
                 pencil.drawImage(that.images[that.curFrameIndex], 0, 0, paperWidth, paperHeight);
+
+                pencil02.clearRect(0, 0, paperWidth02, paperHeight02);
+                pencil02.drawImage(that.images[that.curFrameIndex], 0, 0, paperWidth02, paperHeight02);
 
                 //  update current image index
                 that.curFrameIndex++;
@@ -582,4 +595,6 @@ $(function (){
     // init app
     app.start();
     console.log('program start...............');
+
+    //$('.loading, .start').hide();
 });
