@@ -474,7 +474,7 @@ input {
 .letter-context {
   position: absolute;
   bottom: 0;
-  z-index: 6;
+  z-index: 30;
   width: 100%;
 
   img {
@@ -503,7 +503,7 @@ input {
   .fire {
     position: absolute;
     top: -26.333%;
-    right: 26%;
+    right: 16%;
     z-index: 25;
     opacity: 0;
   }
@@ -512,6 +512,12 @@ input {
   .fire.animated {
     opacity: 1;
     .transition(opacity, .1s, ease-out);
+  }
+
+  /* fire animation final scene */
+  .fire.finalSceneFire {
+    top: -110%;
+    right: 20%;
   }
 }
 
@@ -532,7 +538,7 @@ input {
 
   /* chilun animation */
   .chilun {
-//    -webkit-animation: chilun .5s infinite;
+    -webkit-animation: chilun .5s infinite;
   }
 
 }
