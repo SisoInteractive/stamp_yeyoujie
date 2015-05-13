@@ -298,6 +298,21 @@ var app = {
                 $('.start button').click(function (){
                     sceneStart();
                 });
+
+                //  init sound, just autoPlay once
+                var initSound = function () {
+                    //  delay play
+                    setTimeout(function (){
+                        $('#audio')[0].play();
+                        setTimeout(function () {
+                            // the timeout isn't completely necessary but solves some issues on older devices/buggy browsers
+                            $('#audio')[0].stop();
+                        }, 0);
+
+                        document.removeEventListener('touchstart', initSound, false);
+                    }, 1100);
+                };
+                document.addEventListener('touchstart', initSound, false);
             }
         }
 
