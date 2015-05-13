@@ -315,7 +315,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneMain();
+        sceneLoading();
     },
 
     fire: {
@@ -582,8 +582,4 @@ $(function (){
     // init app
     app.start();
     console.log('program start...............');
-
-    (function (){
-        $('.loading, .start').hide();
-    })('debug');
 });
