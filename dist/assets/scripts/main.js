@@ -9,7 +9,7 @@ var app = {
         $('#main').css({'top': offsetTop});
 
         //  disable touch event to limit ios browser scroll
-        document.documentElement.addEventListener('touchmove', function(e){ return false; });
+        document.documentElement.addEventListener('touchmove', function(e){e.preventDefault(); });
     },
 
     create: function (){
