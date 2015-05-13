@@ -186,10 +186,10 @@ var app = {
                     setTimeout(function (){
                         $('.scene02').addClass('cutting');
 
-                        //  show fire
+                        //  let paper machine animate
                         setTimeout(function (){
-                            $('.fire').addClass('animated');
                             $('.papermachine').addClass('cutting');
+                            $('.fire').addClass('animated finalSceneFire');
                         }, 600);
                     }, 2000);
                 }, 2500);
@@ -315,7 +315,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneLoading();
+        sceneMain();
     },
 
     fire: {
@@ -464,6 +464,9 @@ var app = {
             //  begin machine animate
             app.papermachine.start();
 
+            //  show fire animate
+            $('.fire').addClass('animated');
+
             //  show post mark
             setTimeout(function (){
                 app.letter.showPostmark(1);
@@ -481,6 +484,7 @@ var app = {
                 //  stop machine animate
                 setTimeout(function (){
                     app.papermachine.end();
+                    $('.fire').removeClass('animated');
                 }, 300);
 
                 //  update current letter index
@@ -578,4 +582,8 @@ $(function (){
     // init app
     app.start();
     console.log('program start...............');
+
+    (function (){
+        $('.loading, .start').hide();
+    })('debug');
 });

@@ -488,7 +488,7 @@ input {
 .letter-context {
   position: absolute;
   bottom: 0;
-  z-index: 6;
+  z-index: 30;
   width: 100%;
 }
 .letter-context img {
@@ -513,11 +513,12 @@ input {
 .papermachine-wrap {
   position: relative;
   /* fire animation */
+  /* fire animation final scene */
 }
 .papermachine-wrap .fire {
   position: absolute;
   top: -26.333%;
-  right: 26%;
+  right: 16%;
   z-index: 25;
   opacity: 0;
 }
@@ -525,6 +526,10 @@ input {
   opacity: 1;
   -webkit-transition: opacity 0.1s ease-out;
   transition: opacity 0.1s ease-out;
+}
+.papermachine-wrap .fire.finalSceneFire {
+  top: -110%;
+  right: 20%;
 }
 .papermachine-body {
   max-width: 100.5%;
@@ -541,6 +546,9 @@ input {
 }
 .papermachine.cutting .papermachine-wrap {
   -webkit-animation: shakeMachine .25s infinite;
+}
+.papermachine.cutting .chilun {
+  -webkit-animation: chilun .5s infinite;
 }
 @-webkit-keyframes shakeMachine {
   0% {
