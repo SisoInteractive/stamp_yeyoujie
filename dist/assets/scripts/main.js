@@ -58,31 +58,29 @@ var app = {
         function sceneStart (){
             $('.loading').fadeOut(900, function (){
                 $('.sentence').show();
+
+                //  show and play radio
                 setTimeout(function (){
+                    //  show
+                    $('.radio').addClass('animated bounceIn');
 
-                    //  show and play radio
+                    //  play
                     setTimeout(function (){
-                        //  show
-                        $('.radio').addClass('animated bounceIn');
+                        audio.play();
+                    }, 400);
+                }, 700);
 
-                        //  play
-                        setTimeout(function (){
-                            audio.play();
-                        }, 400);
-                    }, 700);
-
-                    //  into sceneMain
-                    setTimeout(function (){
-                        sceneMain();
-                    }, 3000);
-                }, 1600);
+                //  into sceneMain
+                setTimeout(function (){
+                    sceneMain();
+                }, 3000);
             });
 
             $('.start').fadeOut(900);
         }
 
         //  this index recording the current scene number
-        var sceneIndex = 1;  // scene is letter 1 now cause 1
+        var sceneIndex = 7;  // scene is letter 1 now cause 1
 
         //  sceneMain
         // ------------------------------------------------
@@ -189,6 +187,11 @@ var app = {
                 //  show flag
                 $('.scene02').show().addClass('animated');
 
+                //  show button
+                setTimeout(function (){
+                    $('.buttonWrap').fadeIn(900);
+                }, 600);
+
                 //  move flag to machine
                 setTimeout(function (){
                     $('.scene02').addClass('moveToMachine');
@@ -202,7 +205,7 @@ var app = {
                             $('.papermachine').addClass('cutting');
                             $('.fire').addClass('animated finalSceneFire');
                         }, 600);
-                    }, 2000);
+                    }, 3000);
                 }, 2500);
             }, 900);
         }
@@ -306,7 +309,7 @@ var app = {
 
                 //  show start button
                 $('.start').fadeIn();
-                $('.start button').click(function (){
+                $('.start img').click(function (){
                     sceneStart();
                 });
 
@@ -326,7 +329,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneLoading();
+        sceneMain();
     },
 
     fire: {
@@ -494,7 +497,7 @@ var app = {
 
                 setTimeout(function (){
                     $('.paper-block').hide().removeClass('move');
-                }, 8500);
+                }, 7500);
             }, 200);
 
             //  show post mark
