@@ -6,11 +6,12 @@ var app = {
     init: function (){
         //  vertical center the paper
         var offsetTop = (parseInt($('body').height()) - parseInt($('#main').height())) / 2 + 'px';
-        $('body').css({'height': $('#main').height()});
         $('#main').css({'top': offsetTop});
 
         //  disable touch event to limit ios browser scroll
-        document.body.addEventListener('touchmove', function(e){ e.preventDefault(); }); document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
+        var bodyDom = document.getElementsByTagName('body')[0];
+        bodyDom.addEventListener('touchmove', function(e){ return false; });
+        bodyDom.addEventListener('touchstart', function(e){ return false; });
     },
 
     create: function (){
