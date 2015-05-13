@@ -315,7 +315,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneLoading();
+        sceneMain();
     },
 
     fire: {
@@ -477,8 +477,14 @@ var app = {
             //  begin machine animate
             app.papermachine.start();
 
-            //  show fire animate
-            $('.fire').addClass('animated');
+            //  show paper blocks
+            setTimeout(function (){
+                $('.paper-block').show().addClass('animated');
+
+                setTimeout(function (){
+                    $('.paper-block').hide().addClass('animated');
+                }, 7900);
+            }, 200);
 
             //  show post mark
             setTimeout(function (){
@@ -596,5 +602,5 @@ $(function (){
     app.start();
     console.log('program start...............');
 
-    //$('.loading, .start').hide();
+    $('.loading').hide(); $('.start').remove();
 });
