@@ -6,11 +6,13 @@
 html {
   font-family: "microsoft yahei", Arial, "Helvetica Neue", Helvetica, sans-serif;
   height: 100%;
+  overflow: hidden;
 }
 
 body {
   background: #000;
   height: 100%;
+  overflow: hidden;
 }
 
 a {
@@ -181,7 +183,7 @@ input {
   top: 10px;
   right: 8px;
   width: 12%;
-  z-index: 10;
+  z-index: 200;
   opacity: 0;
   cursor: pointer;
 }
@@ -356,8 +358,6 @@ input {
     .transition(height, 2s, ease-out);
   }
 }
-
-
 
 .letter.cutFinish {
   transform: translateY(130%);
@@ -647,11 +647,11 @@ input {
 
 /* paper block */
 .paper-block {
-  display: none;
   position: absolute;
-  top: -40%;
+  top: -60%;
   width: 20%;
-  z-index: 30;
+  z-index: 22;
+  .transition(transform, 4s, ease-out);
 }
 
 .paper-block01 {
@@ -662,65 +662,15 @@ input {
   right: 0;
 }
 
-/* paper blocks */
-.paper-block01.animated {
-  -webkit-animation: floatLeft 2s 4;
+.paper-block01.move {
+  transform: translate3d(-100%, 400%, 0);
 }
 
-.paper-block02.animated {
-  -webkit-animation: floatRight 2s 4;
+.paper-block02.move {
+  transform: translate3d(100%, 400%, 0);
 }
 
 
-@-webkit-keyframes floatLeft {
-  0% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-
-  30% {
-    opacity: 1;
-    transform: translate3d(-20%, -100%, 0);
-  }
-
-  31% {
-    transform: translate3d(-20%, -100%, 0);
-  }
-
-  80% {
-    opacity: .6;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
-  }
-}
-
-@-webkit-keyframes floatRight {
-  0% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-
-  30% {
-    opacity: 1;
-    transform: translate3d(20%, -100%, 0);
-  }
-
-  31% {
-    transform: translate3d(20%, -100%, 0);
-  }
-
-  80% {
-    opacity: .6;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
-  }
-}
 
 /* sentence */
 .sentence {
@@ -736,7 +686,7 @@ input {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 2;
+  z-index: 24;
   width: 100%;
   height: 100%;
   text-align: center;
@@ -1078,7 +1028,12 @@ input {
   }
 
   .letter.cutFinish {
-    transform: translateY(120%);
+    transform: translateY(130%);
+  }
+
+  /* paper machine */
+  .papermachine.animated {
+    transform: translateY(44%);
   }
 
   /* scene02 animate */

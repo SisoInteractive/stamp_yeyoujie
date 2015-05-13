@@ -95,6 +95,9 @@ var app = {
             //  show machine
             app.papermachine.show();
 
+            //  instance of hammer
+            var hammer = new Hammer(document.getElementById('main'));
+
             function sceneCheckout(sceneIndex) {
                 /** check current scene is passed the last scene */
                 if (sceneIndex <=7) {
@@ -129,14 +132,16 @@ var app = {
                     }, 900);
                 }
 
-                //  bind letter cutting
-                $('#main').click(function (){
-                    $('.scene-arrow').hide();
+                //  bind swipe to cut email
+                hammer.on('panleft panright panup pandown', function(ev) {
+                    if (ev.type == 'pandown') {
+                        $('.scene-arrow').hide();
 
-                    //  cutting letter
-                    if (canClicked == true ) {
-                        cutEmail();
-                        canClicked = false;
+                        //  cutting letter
+                        if (canClicked == true ) {
+                            cutEmail();
+                            canClicked = false;
+                        }
                     }
                 });
 
@@ -479,11 +484,11 @@ var app = {
 
             //  show paper blocks
             setTimeout(function (){
-                $('.paper-block').show().addClass('animated');
+                $('.paper-block').show().addClass('move');
 
                 setTimeout(function (){
-                    $('.paper-block').hide().addClass('animated');
-                }, 7900);
+                    $('.paper-block').hide().removeClass('move');
+                }, 8500);
             }, 200);
 
             //  show post mark
