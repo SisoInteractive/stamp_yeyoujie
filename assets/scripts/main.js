@@ -136,9 +136,20 @@ var app = {
                     }, 900);
                 }
 
+                //  bind click button to cut email
+                $('.scene-arrow').click(function (){
+                    $('.scene-arrow').hide();
+
+                    //  cutting letter
+                    if (canClicked == true ) {
+                        cutEmail();
+                        canClicked = false;
+                    }
+                });
+
                 //  bind swipe to cut email
                 hammer.on('panleft panright panup pandown', function(ev) {
-                    if (ev.type == 'pandown') {
+                    if (ev.type == 'pandown' || ev.type == 'panup') {
                         $('.scene-arrow').hide();
 
                         //  cutting letter
@@ -492,13 +503,11 @@ var app = {
             app.papermachine.start();
 
             //  show paper blocks
-            setTimeout(function (){
-                $('.paper-block').show().addClass('move');
+            $('.paper-block').show().addClass('move');
 
-                setTimeout(function (){
-                    $('.paper-block').hide().removeClass('move');
-                }, 7500);
-            }, 200);
+            setTimeout(function (){
+                $('.paper-block').hide().removeClass('move');
+            }, 6200);
 
             //  show post mark
             setTimeout(function (){

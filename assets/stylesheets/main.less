@@ -7,11 +7,15 @@ html {
   font-family: "microsoft yahei", Arial, "Helvetica Neue", Helvetica, sans-serif;
   height: 100%;
   overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 
 body {
   background: #000;
   height: 100%;
+  padding: 0;
+  margin: 0;
   overflow: hidden;
   zoom: 1;
 }
@@ -115,10 +119,13 @@ input {
 
 .loading-text {
   position: absolute;
-  left: 53%;
-  top: 46%;
+  left: 0;
+  right: 0;
+  top: 48%;
+  font-size: 1.2em;
   color: #332c1d;
-  text-shadow: 0 0 1px rgba(204, 198, 186, .8);
+  text-align: center;
+  text-shadow: 0 0 2px rgba(204, 198, 186, .8);
 }
 
 /* start button */
@@ -527,14 +534,14 @@ input {
 
   /* fire animation final scene */
   .fireSmall.finalSceneFire {
-     top: -92%;
+     top: -85%;
      right: 20%;
    }
 
   .fireBig.finalSceneFire {
-    top: -103%;
+    top: -93.5%;
     right: 0;
-    left: 20%;
+    left: 18%;
   }
 
   /* light */
@@ -646,35 +653,60 @@ input {
 .paper-block {
   display: none;
   position: absolute;
-  top: 0%;
-  width: 20%;
+  top: 10%;
+  width: 13%;
   z-index: 5;
-  .transition(transform, 4s, ease-out);
 }
 
-.paper-block01 {
-  left: 0;
+.paper-block01-01 {
+  left: 10%;
+}
+.paper-block01-02 {
+  width: 3%;
+  left: 10%;
+}
+.paper-block01-03 {
+  left: 10%;
+  width: 3%;
+}
+.paper-block02-01 {
+  right: 10%;
+}
+.paper-block02-02 {
+  right: 10%;
+  width: 3%;
+}
+.paper-block02-03 {
+  right: 10%;
+  width: 3%;
 }
 
-.paper-block02 {
-  right: 0;
+.paper-block01-01.move {
+  -webkit-animation: moveLeft 26s 1;
 }
-
-.paper-block01.move {
-  -webkit-animation: moveLeft 2s 4;
+.paper-block01-02.move {
+  -webkit-animation: moveLeft 9s 1;
 }
-
-.paper-block02.move {
-  -webkit-animation: moveRight 2s 4;
+.paper-block01-03.move {
+  -webkit-animation: moveLeft 9s 1;
+}
+.paper-block02-01.move {
+  -webkit-animation: moveRight 30s 1;
+}
+.paper-block02-02.move {
+  -webkit-animation: moveRight 7.6s 1;
+}
+.paper-block02-03.move {
+  -webkit-animation: moveRight 8s 1;
 }
 
 @-webkit-keyframes moveLeft {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) rotate(0);
   }
 
-  99.9% {
-    transform: translate3d(-100%, 400%, 0);
+  99.999% {
+    transform: translate3d(-260%, 4000%, 0) rotate(390deg);
   }
 
   100% {
@@ -684,11 +716,11 @@ input {
 
 @-webkit-keyframes moveRight {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) rotate(0);
   }
 
-  99.9% {
-    transform: translate3d(100%, 400%, 0);
+  99.999% {
+    transform: translate3d(220%, 4000%, 0)  rotate(-430deg);
   }
 
   100% {
