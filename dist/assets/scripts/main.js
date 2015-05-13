@@ -302,15 +302,13 @@ var app = {
                 //  init sound, just autoPlay once
                 var initSound = function () {
                     //  delay play
-                    setTimeout(function (){
-                        $('#audio')[0].play();
-                        setTimeout(function () {
-                            // the timeout isn't completely necessary but solves some issues on older devices/buggy browsers
-                            $('#audio')[0].stop();
-                        }, 0);
+                    $('#audio')[0].play();
+                    setTimeout(function () {
+                        // the timeout isn't completely necessary but solves some issues on older devices/buggy browsers
+                        $('#audio')[0].stop();
+                    }, 0);
 
-                        document.removeEventListener('touchstart', initSound, false);
-                    }, 1100);
+                    document.removeEventListener('touchstart', initSound, false);
                 };
                 document.addEventListener('touchstart', initSound, false);
             }
@@ -540,6 +538,7 @@ var app = {
 
         show: function (){
             var that = this;
+            that.machine.show();
             setTimeout(function (){
                 that.machine.addClass('animated');
             }, 2000);
