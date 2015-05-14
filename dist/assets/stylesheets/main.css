@@ -1,6 +1,14 @@
 /*************************************/
 /* Reset */
 /*************************************/
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 html {
   font-family: "microsoft yahei", Arial, "Helvetica Neue", Helvetica, sans-serif;
   height: 100%;
@@ -15,12 +23,6 @@ body {
   margin: 0;
   overflow: hidden;
   zoom: 1;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 a {
   text-decoration: none;
@@ -40,8 +42,8 @@ input {
 /* main */
 #main {
   height: 100%;
-  max-width: 680px;
-  max-height: 1280px;
+  max-width: 360px;
+  max-height: 640px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -757,7 +759,7 @@ input {
 .scene02 {
   position: absolute;
   left: 0;
-  top: -39%;
+  top: -40%;
   z-index: 20;
   width: 100%;
   height: 100%;
@@ -888,76 +890,63 @@ input {
 /*************************************/
 /* Responsive */
 /*************************************/
-/** 320px width devices */
-@media screen and (max-width: 320px) and (max-height: 480px) {
-  .letter {
-    width: 74%;
-    left: 13%;
-  }
-  /** letter cutting */
-  .letter.cutting {
-    -webkit-transform: translateY(8%);
-        -ms-transform: translateY(8%);
-            transform: translateY(8%);
-  }
-  .letter.cutFinish {
-    -webkit-transform: translateY(130%);
-        -ms-transform: translateY(130%);
-            transform: translateY(130%);
-  }
-  /* paper machine */
-  .papermachine.animated {
-    -webkit-transform: translateY(44%);
-        -ms-transform: translateY(44%);
-            transform: translateY(44%);
-  }
-  /* scene02 animate */
-  .scene02.animated .flagWrap {
-    -webkit-transform: translateY(-10%);
-        -ms-transform: translateY(-10%);
-            transform: translateY(-10%);
-    -webkit-transition: -webkit-transform 2s ease-out;
-    transition: transform 2s ease-out;
-  }
-  .scene02.moveToMachine .flagWrap {
-    -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
-            transform: translateY(0);
-    -webkit-transition: -webkit-transform 1s ease-out;
-    transition: transform 1s ease-out;
-  }
-  .scene02.cutting .flagWrap {
-    -webkit-animation: downUp 4s infinite;
-  }
-  @-webkit-keyframes downUp {
-    0% {
-      -webkit-transform: translateY(0%);
-              transform: translateY(0%);
-    }
-    66% {
-      -webkit-transform: translateY(5%);
-              transform: translateY(5%);
-    }
-    99% {
-      -webkit-transform: translateY(0%);
-              transform: translateY(0%);
-    }
-  }
-}
-/** 675 width devices */
-@media screen and (min-width: 675px) and (min-height: 667px) {
+@media screen and (min-width: 320px) and (min-height: 480px) {
   .scene02 {
-    top: -50%;
+    top: -57%;
+  }
+  .papermachine-wrap .fireBig.finalSceneFire {
+    top: -95.5%;
   }
 }
-@media screen and (max-height: 640px) {
-  .fireBig.finalSceneFire {
-    top: -98.533%;
+@media screen and (min-width: 320px) and (min-height: 533px) {
+  .scene02 {
+    top: -53%;
+  }
+  .papermachine-wrap .fireBig.finalSceneFire {
+    top: -95.5%;
   }
 }
-/** 375px width devices */
+@media screen and (min-width: 320px) and (min-height: 568px) {
+  .scene02 {
+    top: -47%;
+  }
+  .papermachine-wrap .fireBig.finalSceneFire {
+    top: -96.5%;
+  }
+}
+@media screen and (min-width: 360px) and (min-height: 640px) {
+  .scene02 {
+    top: -65%;
+  }
+  .papermachine-wrap .fireBig.finalSceneFire {
+    top: -95.5%;
+  }
+}
 @media screen and (min-width: 375px) and (min-height: 667px) {
-  .fireBig {
-    top: 97.5%;
+  .scene02 {
+    top: -42.5%;
+  }
+  .papermachine-wrap .fireBig.finalSceneFire {
+    top: -97.2%;
+  }
+}
+@media screen and (min-width: 384px) and (min-height: 640px) {
+  .scene02 {
+    top: -47%;
+  }
+  .papermachine-wrap .fireBig.finalSceneFire {
+    top: -97.2%;
+  }
+}
+@media screen and (min-width: 504px) and (min-height: 504px) {
+  #main {
+    max-width: 310px;
+    max-height: 504px;
+  }
+  .scene02 {
+    top: -47%;
+  }
+  .papermachine-wrap .fireBig.finalSceneFire {
+    top: -97.2%;
   }
 }

@@ -12,7 +12,7 @@ var app = {
         document.documentElement.addEventListener('touchmove', function(e){e.preventDefault(); });
     },
 
-    curScene: 1,
+    curScene: 7,
 
     create: function (){
         //  audio controller
@@ -91,7 +91,7 @@ var app = {
         }
 
         //  this index recording the current scene number
-        app.curScene = 1;  // scene is letter 1 now cause 1
+        app.curScene = 7;  // scene is letter 1 now cause 1
 
         //  sceneMain
         // ------------------------------------------------
@@ -204,8 +204,16 @@ var app = {
 
         //  scene final
         function sceneFinal(){
+            // TODO:::: machine
+            app.papermachine.show();
             //  start scene
             setTimeout(function (){
+                // TODO:: init fire
+                if (app.fire.isInitFire == false) {
+                    app.fire.init();
+                    app.fire.isInitFire = true;
+                }
+
                 //  show flag
                 $('.scene02').show().addClass('animated');
                 $('.radio').addClass('lastScene');
@@ -352,7 +360,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneLoading();
+        sceneFinal();
     },
 
     fire: {
@@ -453,11 +461,11 @@ var app = {
              *  set paper blocks
              *  @param   index   the id of stamp and money for this letter to show
              * */
-            //  if not init fire yet, init it
-            if (app.fire.isInitFire == false) {
-                app.fire.init();
-                app.fire.isInitFire = true;
-            }
+            // TODO:: if not init fire yet, init it
+            //if (app.fire.isInitFire == false) {
+            //    app.fire.init();
+            //    app.fire.isInitFire = true;
+            //}
 
             //  play scene audio
             $('#scene01')[0].pause();
