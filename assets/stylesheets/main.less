@@ -39,8 +39,8 @@ input {
 /* main */
 #main {
   height: 100%;
-  max-width: 360px;
-  max-height: 640px;
+  max-width: 680px;
+  max-height: 1280px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -191,6 +191,10 @@ input {
   audio {
     display: none;
   }
+}
+
+.radio.lastScene {
+  z-index: 300;
 }
 
 #audio { display: none;}
@@ -977,5 +981,12 @@ input {
 @media screen and (max-height: 640px) {
   .fireBig.finalSceneFire {
     top: -97.533%;
+  }
+}
+
+/** 320px width devices */
+@media screen and (min-width: 375px) and (min-height: 667px) {
+  .fireBig {
+    top: 96.5%;
   }
 }
