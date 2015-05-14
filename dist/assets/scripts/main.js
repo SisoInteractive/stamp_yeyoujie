@@ -12,6 +12,8 @@ var app = {
         document.documentElement.addEventListener('touchmove', function(e){e.preventDefault(); });
     },
 
+    curScene: 1,
+
     create: function (){
         //  audio controller
         // ------------------------------------------------
@@ -80,7 +82,7 @@ var app = {
         }
 
         //  this index recording the current scene number
-        var sceneIndex = 1;  // scene is letter 1 now cause 1
+        app.curScene = 1;  // scene is letter 1 now cause 1
 
         //  sceneMain
         // ------------------------------------------------
@@ -102,16 +104,16 @@ var app = {
             //  instance of hammer
             var hammer = new Hammer(document.getElementById('main'));
 
-            function sceneCheckout(sceneIndex) {
+            function sceneCheckout() {
                 /** check current scene is passed the last scene */
-                if (sceneIndex <=7) {
+                if (app.curScene <=7) {
                     var canClicked = false;
                     //  show first letter width delay
 
-                    if (sceneIndex == 1) {
+                    if (app.curScene == 1) {
                         setTimeout(function (){
                             //  letter in
-                            app.letter.showLetter(sceneIndex);
+                            app.letter.showLetter(app.curScene);
 
                             //  show letter cutting button
                             setTimeout(function (){
@@ -121,7 +123,7 @@ var app = {
                         }, 4000);
                     } else {
                         //  letter in
-                        app.letter.showLetter(sceneIndex);
+                        app.letter.showLetter(app.curScene);
 
                         //  show letter cutting button
                         setTimeout(function (){
@@ -165,9 +167,9 @@ var app = {
                     app.letter.cutLetter();
 
                     /** checkout to next scene */
-                    sceneIndex++;
+                    app.curScene++;
                     setTimeout(function (){
-                        sceneCheckout(sceneIndex);
+                        sceneCheckout(app.curScene);
 
                         //  reset finished letter class state
                         setTimeout(function (){
@@ -188,7 +190,7 @@ var app = {
                 }
             }
 
-            sceneCheckout(sceneIndex);
+            sceneCheckout(app.curScene);
         }
 
         //  scene final
@@ -455,7 +457,7 @@ var app = {
             $('#scene05')[0].pause();
             $('#scene06')[0].pause();
             $('#scene07')[0].pause();
-            $('#scene0' + app.letter.currentLetter)[0].play();
+            $('#scene0' + app.curScene)[0].play();
 
             //  current letter
             var currentLetter = '.letter0' + app.letter.currentLetter;
