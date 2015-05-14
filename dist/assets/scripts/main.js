@@ -186,7 +186,7 @@ var app = {
                                 lastLetter.removeClass('back')
                             }, 200);
                         }, 1000);
-                    }, 8000);
+                    }, 3700);
                 }
             }
 
@@ -199,6 +199,7 @@ var app = {
             setTimeout(function (){
                 //  show flag
                 $('.scene02').show().addClass('animated');
+                $('.radio').addClass('lastScene');
 
                 //  show button
                 setTimeout(function (){
@@ -457,7 +458,13 @@ var app = {
             $('#scene05')[0].pause();
             $('#scene06')[0].pause();
             $('#scene07')[0].pause();
-            $('#scene0' + app.curScene)[0].play();
+            if (app.curScene == 6) {
+                setTimeout(function (){
+                    $('#scene0' + app.curScene)[0].play();
+                }, 2000);
+            } else {
+                $('#scene0' + app.curScene)[0].play();
+            }
 
             //  current letter
             var currentLetter = '.letter0' + app.letter.currentLetter;
@@ -523,7 +530,7 @@ var app = {
             //  show post mark
             setTimeout(function (){
                 app.letter.showPostmark(1);
-            }, 1900);
+            }, 2000);
 
             //  cutting all letter
             setTimeout(function (){
@@ -542,7 +549,7 @@ var app = {
 
                 //  update current letter index
                 app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
-            }, 7800);
+            }, 3500);
         },
 
         showPostmark: function (){

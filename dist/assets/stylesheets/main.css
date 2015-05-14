@@ -34,8 +34,8 @@ input {
 /* main */
 #main {
   height: 100%;
-  max-width: 360px;
-  max-height: 640px;
+  max-width: 680px;
+  max-height: 1280px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -232,6 +232,9 @@ input {
 }
 .radio audio {
   display: none;
+}
+.radio.lastScene {
+  z-index: 300;
 }
 #audio {
   display: none;
@@ -667,30 +670,28 @@ input {
   display: none;
   position: absolute;
   top: 10%;
-  width: 13%;
   z-index: 5;
+  width: 3%;
 }
 .paper-block01-01 {
   left: 10%;
+  width: 10%;
 }
 .paper-block01-02 {
-  width: 3%;
   left: 10%;
 }
 .paper-block01-03 {
   left: 10%;
-  width: 3%;
 }
 .paper-block02-01 {
   right: 10%;
+  width: 10%;
 }
 .paper-block02-02 {
   right: 10%;
-  width: 3%;
 }
 .paper-block02-03 {
   right: 10%;
-  width: 3%;
 }
 .paper-block01-01.move {
   -webkit-animation: moveLeft 26s 1;
@@ -705,10 +706,10 @@ input {
   -webkit-animation: moveRight 30s 1;
 }
 .paper-block02-02.move {
-  -webkit-animation: moveRight 7.6s 1;
+  -webkit-animation: moveRight 9.2s 1;
 }
 .paper-block02-03.move {
-  -webkit-animation: moveRight 8s 1;
+  -webkit-animation: moveRight 8.7s 1;
 }
 @-webkit-keyframes moveLeft {
   0% {
@@ -946,5 +947,11 @@ input {
 @media screen and (max-height: 640px) {
   .fireBig.finalSceneFire {
     top: -97.533%;
+  }
+}
+/** 320px width devices */
+@media screen and (min-width: 375px) and (min-height: 667px) {
+  .fireBig {
+    top: 96.5%;
   }
 }
