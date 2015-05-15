@@ -849,8 +849,8 @@ input {
             transform: translateY(17%);
   }
   50% {
-    -webkit-transform: translateY(23%);
-            transform: translateY(23%);
+    -webkit-transform: translateY(19%);
+            transform: translateY(19%);
   }
   100% {
     -webkit-transform: translateY(17%);
@@ -892,7 +892,7 @@ input {
 /*************************************/
 @media screen and (min-width: 320px) and (min-height: 480px) {
   .scene02 {
-    top: -59%;
+    top: -58.5%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -95.5%;
@@ -900,7 +900,7 @@ input {
 }
 @media screen and (min-width: 320px) and (min-height: 533px) {
   .scene02 {
-    top: -53.5%;
+    top: -53%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -95.5%;
@@ -916,23 +916,29 @@ input {
 }
 @media screen and (min-width: 360px) and (min-height: 640px) {
   .scene02 {
-    top: -62.5%;
+    top: -62%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -95.5%;
   }
 }
 @media screen and (min-width: 375px) and (min-height: 667px) {
+  #main {
+    max-width: 375px;
+  }
   .scene02 {
-    top: -40%;
+    top: -39.5%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -97.2%;
   }
 }
 @media screen and (min-width: 384px) and (min-height: 640px) {
+  #main {
+    max-width: 384px;
+  }
   .scene02 {
-    top: -48%;
+    top: -47.5%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -97.2%;
@@ -944,7 +950,7 @@ input {
     max-height: 504px;
   }
   .scene02 {
-    top: -46.5%;
+    top: -46%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -97.2%;
