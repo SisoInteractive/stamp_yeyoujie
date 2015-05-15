@@ -356,7 +356,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneLoading();
+        sceneFinal();
     },
 
     fire: {
