@@ -940,7 +940,7 @@ input {
 }
 @media screen and (max-width: 375px) and (max-height: 667px) {
   .scene02 {
-    top: -78.5%;
+    top: -76.5%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -97.2%;
