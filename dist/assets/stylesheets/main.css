@@ -892,7 +892,7 @@ input {
 /*************************************/
 @media screen and (min-width: 320px) and (min-height: 480px) {
   .scene02 {
-    top: -57%;
+    top: -67%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -95.5%;
@@ -900,7 +900,7 @@ input {
 }
 @media screen and (min-width: 320px) and (min-height: 533px) {
   .scene02 {
-    top: -53%;
+    top: -63%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -95.5%;
@@ -908,7 +908,7 @@ input {
 }
 @media screen and (min-width: 320px) and (min-height: 568px) {
   .scene02 {
-    top: -47%;
+    top: -57%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -96.5%;
@@ -916,7 +916,7 @@ input {
 }
 @media screen and (min-width: 360px) and (min-height: 640px) {
   .scene02 {
-    top: -65%;
+    top: -75%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -95.5%;
@@ -924,7 +924,7 @@ input {
 }
 @media screen and (min-width: 375px) and (min-height: 667px) {
   .scene02 {
-    top: -42.5%;
+    top: -52.5%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -97.2%;
@@ -932,7 +932,7 @@ input {
 }
 @media screen and (min-width: 384px) and (min-height: 640px) {
   .scene02 {
-    top: -47%;
+    top: -57%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -97.2%;
@@ -944,7 +944,7 @@ input {
     max-height: 504px;
   }
   .scene02 {
-    top: -47%;
+    top: -57%;
   }
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -97.2%;
