@@ -48,7 +48,6 @@ input {
 /* main */
 #main {
   height: 100%;
-  max-width: 360px;
   max-height: 640px;
   margin: 0 auto;
   position: relative;
@@ -552,7 +551,7 @@ input {
   /* fire animation final scene */
   .fireSmall.finalSceneFire {
      top: -85%;
-     right: 20%;
+     right: 21.5%;
    }
 
   .fireBig.finalSceneFire {
@@ -963,9 +962,6 @@ input {
 
 //  iphone6: include browser toolbar height
 @media screen and (min-width: 375px) and (min-height: 667px) {
-  #main {
-    max-width: 375px;
-  }
 
   .scene02 {
     top: -39.5%;
@@ -978,10 +974,6 @@ input {
 
 //  LG Nexus 4: include browser toolbar height
 @media screen and (min-width: 384px) and (min-height: 640px) {
-  #main {
-    max-width: 384px;
-  }
-
   .scene02 {
     top: -47.5%;
   }
@@ -993,16 +985,18 @@ input {
 
 //  Blackberry Passport: include browser toolbar height
 @media screen and (min-width: 504px) and (min-height: 504px) {
-  #main {
-    max-width: 310px;
-    max-height: 504px;
-  }
-
   .scene02 {
     top: -46%;
   }
 
   .papermachine-wrap .fireBig.finalSceneFire {
     top: -97.2%;
+  }
+}
+
+//  Blackberry Passport: include browser toolbar height
+@media screen and (min-width: 560px) {
+  #main {
+    width: 360px;
   }
 }

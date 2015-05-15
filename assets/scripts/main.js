@@ -348,10 +348,6 @@ var app = {
                 var initSound = function () {
                     //  delay play
                     $('#audio')[0].play();
-                    setTimeout(function () {
-                        // the timeout isn't completely necessary but solves some issues on older devices/buggy browsers
-                        $('#audio')[0].stop();
-                    }, 0);
 
                     document.removeEventListener('touchstart', initSound, false);
                 };
