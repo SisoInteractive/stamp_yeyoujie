@@ -91,7 +91,7 @@ var app = {
         }
 
         //  this index recording the current scene number
-        app.curScene = 7;  // scene is letter 1 now cause 1
+        app.curScene = 1;  // scene is letter 1 now cause 1
 
         //  sceneMain
         // ------------------------------------------------
