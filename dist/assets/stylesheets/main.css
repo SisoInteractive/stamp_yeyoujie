@@ -828,6 +828,21 @@ input {
   max-width: 32%;
   cursor: pointer;
 }
+.share-img {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 350;
+}
+.share-txt img {
+  width: 100%;
+  max-width: 100%;
+}
 .scene02.animated .flagWrap {
   -webkit-transform: translateY(-10%);
       -ms-transform: translateY(-10%);

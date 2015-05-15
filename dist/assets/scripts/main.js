@@ -42,6 +42,15 @@ var app = {
             }
         });
 
+        //  bind share button
+        $('.shareFriends').click(function (){
+            $('.share-img').fadeIn();
+        });
+
+        $('.share-img').click(function (){
+            $(this).fadeOut();
+        });
+
         //  scene loading
         // ------------------------------------------------
         var imageAmounts = 35,
@@ -195,7 +204,7 @@ var app = {
                                 lastLetter.removeClass('back')
                             }, 200);
                         }, 1000);
-                    }, 3700);
+                    }, 4700);
                 }
             }
 
@@ -538,7 +547,7 @@ var app = {
 
             setTimeout(function (){
                 $('.paper-block').hide().removeClass('move');
-            }, 6200);
+            }, 7200);
 
             //  show post mark
             setTimeout(function (){
@@ -562,7 +571,7 @@ var app = {
 
                 //  update current letter index
                 app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
-            }, 3500);
+            }, 4500);
         },
 
         showPostmark: function (){
