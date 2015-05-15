@@ -962,7 +962,7 @@ input {
     top: -97.2%;
   }
 }
-@media screen and (max-width: 560px) {
+@media screen and (min-width: 560px) {
   #main {
     max-width: 360px;
   }
