@@ -575,7 +575,10 @@ input {
   right: 4%;
   bottom: 2px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.8);
+  -webkit-background: rgba(255, 255, 255, 0.8);
+  -moz-background: rgba(255, 255, 255, 0.8);
+  -o-background: rgba(255, 255, 255, 0.8);
+  -ms-background: rgba(255, 255, 255, 0.8);
   -webkit-filter: blur(5px);
   -moz-filter: blur(5px);
   -o-filter: blur(5px);
