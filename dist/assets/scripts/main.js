@@ -73,7 +73,7 @@ var app = {
                     document.getElementById('scene04').volume = .5;
                     document.getElementById('scene05').volume = .5;
                     document.getElementById('scene06').volume = .5;
-                    document.getElementById('scene07').volume = .5;
+                    document.getElementById('scene07').volume = 1;
 
                     //  play
                     setTimeout(function (){
