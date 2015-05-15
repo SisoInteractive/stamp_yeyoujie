@@ -12,7 +12,7 @@ var app = {
         document.documentElement.addEventListener('touchmove', function(e){e.preventDefault(); });
     },
 
-    curScene: 7,
+    curScene: 1,
 
     create: function (){
         //  audio controller
@@ -360,7 +360,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneFinal();
+        sceneLoading();
     },
 
     fire: {
