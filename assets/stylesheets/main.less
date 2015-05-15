@@ -917,8 +917,23 @@ input {
 /*************************************/
 //  iphone4: include browser toolbar height
 @media screen and (min-width: 320px) and (min-height: 480px) {
+  /** letter cutting */
+  .letter.cutting {
+    transform: translateY(8%);
+  }
+
+  .letter.cutFinish {
+    transform: translateY(130%);
+  }
+
+  /* paper machine */
+  .papermachine.animated {
+    transform: translateY(44%);
+  }
+
+
   .scene02 {
-    top: -42.5%;
+    top: -45.5%;
   }
 
   .papermachine-wrap .fireBig.finalSceneFire {
@@ -929,7 +944,7 @@ input {
 //  Samsung Galaxy S2: include browser toolbar height
 @media screen and (min-width: 320px) and (min-height: 533px) {
   .scene02 {
-    top: -42.5%;
+    top: -46.5%;
   }
 
   .papermachine-wrap .fireBig.finalSceneFire {
@@ -940,7 +955,7 @@ input {
 //  iphone5: include browser toolbar height
 @media screen and (min-width: 320px) and (min-height: 568px) {
   .scene02 {
-    top: -42.5%;
+    top: -46.5%;
   }
 
   .papermachine-wrap .fireBig.finalSceneFire {
