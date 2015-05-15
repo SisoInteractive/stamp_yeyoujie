@@ -154,7 +154,7 @@ module.exports = function (grunt){
     grunt.registerTask('injectFileToHtml', ['injector']); //ok
     // main task
     //grunt.registerTask('deploy', ['cleanDir', 'copyFileToDist', 'compileLess', 'autoPrefixCss', 'concatCompressorCss', 'concatJs', 'injectFileToHtml']);
-    grunt.registerTask('deploy', ['cleanDir', 'copyFileToDist', 'compileLess', 'autoPrefixCss', 'concatJs']);
+    grunt.registerTask('deploy', ['cleanDir', 'copyFileToDist', 'compileLess', 'autoPrefixCss', 'concatCompressorCss', 'concatJs']);
     grunt.registerTask('live', ['watch']);
 
 
