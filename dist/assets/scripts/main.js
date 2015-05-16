@@ -578,44 +578,6 @@ var app = {
             //  show postmark in current letter
             $('.letter0' + app.letter.currentLetter + ' .letter-postmark').removeClass('animated')
                 .addClass('animated');
-        },
-
-        out: function (){
-            //  stamp hinge out
-            $('.letter-stamp').addClass('animated hinge');
-
-            //  letter out
-            setTimeout(function (){
-                $('.letter').fadeOut(800, function (){
-                    $('.letter').removeClass('animated');
-                    $('.letter-postmark').removeClass('animated');
-                    $('.letter-stamp').removeClass('animated hinge');
-                    $('.letter-money').removeClass('animated');
-                    $('.letter-full-mask').removeClass('animated');
-                    $('.letter-context img').hide();
-                });
-
-                //  out paper blocks
-                setTimeout(function (){
-                    $('.paper-block03').fadeOut(300);
-
-                    setTimeout(function (){
-                        $('.paper-block04').fadeOut(300);
-                    }, 100);
-
-                    $('.paper-block06').fadeOut(300);
-
-                    setTimeout(function (){
-                        $('.paper-block05').fadeOut(300);
-                    }, 200);
-
-                    $('.paper-block07').fadeOut(300);
-
-                    setTimeout(function (){
-                        $('.paper-block08').fadeOut(300);
-                    }, 100);
-                }, 1200);
-            }, 2000);
         }
     },
 
@@ -636,18 +598,6 @@ var app = {
 
         end: function (){
             $('.papermachine').removeClass('cutting');
-        },
-
-        out: function (){
-            var that = this;
-
-            this.machine.removeClass('animated')
-                .addClass('fastOut');
-
-            //  remove fastOut
-            setTimeout(function (){
-                that.machine.removeClass('fastOut');
-            }, 4000);
         }
     },
 
