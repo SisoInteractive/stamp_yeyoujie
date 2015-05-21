@@ -9,7 +9,7 @@
     <title></title>
 
     <!-- injector:css -->
-    <link rel="stylesheet/less" href="assets/stylesheets/main.less"/>
+    <link rel="stylesheet" href="assets/stylesheets/main.css"/>
     <!-- endinjector -->
 </head>
 <body>
@@ -102,20 +102,19 @@
 
     <!-- letter -->
     <div class="letter letter01">
-        <img class="letter-money-sketch" src="..." alt=""/>
         <div class="letter-money-mask">
             <img class="letter-money" src="..." alt=""/>
         </div>
 
-        <img class="letter-stamp-sketch" src="assets/images/letter-stamp01.png" alt=""/>
         <div class="letter-stamp-mask">
             <img class="letter-stamp" src="assets/images/letter-stamp01.png" alt=""/>
         </div>
 
         <img class="letter-postmark a-gaizhang" src="assets/images/postmark.png" alt=""/>
-        <img class="letter-sketch" src="assets/images/letter-sketch.png" alt=""/>
         <div class="letter-full-mask">
-            <div class="letter-mask"></div>
+            <div class="letter-mask">
+                <img src="assets/images/letter-full.gif" alt=""/>
+            </div>
         </div>
 
         <div class="letter-context">
@@ -124,20 +123,19 @@
     </div>
 
     <div class="letter letter02">
-        <img class="letter-money-sketch" src="..." alt=""/>
         <div class="letter-money-mask">
             <img class="letter-money" src="..." alt=""/>
         </div>
 
-        <img class="letter-stamp-sketch" src="assets/images/letter-stamp01.png" alt=""/>
         <div class="letter-stamp-mask">
             <img class="letter-stamp" src="assets/images/letter-stamp01.png" alt=""/>
         </div>
 
         <img class="letter-postmark a-gaizhang" src="assets/images/postmark.png" alt=""/>
-        <img class="letter-sketch" src="assets/images/letter-sketch.png" alt=""/>
         <div class="letter-full-mask">
-            <div class="letter-mask"></div>
+            <div class="letter-mask">
+                <img src="assets/images/letter-full.gif" alt=""/>
+            </div>
         </div>
 
         <div class="letter-context">
@@ -178,6 +176,24 @@
             <img class="paper-block paper-block02-01" src="assets/images/paper-block01.png" alt=""/>
             <img class="paper-block paper-block02-02" src="assets/images/paper-block02.png" alt=""/>
             <img class="paper-block paper-block02-03" src="assets/images/paper-block03.png" alt=""/>
+            
+            <!--  big paper blocks -->
+            <img class="paper-big-block paper-big-block01" src="assets/images/block01.png" alt=""/>
+            <img class="paper-big-block paper-big-block02" src="assets/images/block02.png" alt=""/>
+            <img class="paper-big-block paper-big-block03" src="assets/images/block03.png" alt=""/>
+            <img class="paper-big-block paper-big-block04" src="assets/images/block04.png" alt=""/>
+            <img class="paper-big-block paper-big-block05" src="assets/images/block05.png" alt=""/>
+            <img class="paper-big-block paper-big-block06" src="assets/images/block06.png" alt=""/>
+            <img class="paper-big-block paper-big-block07" src="assets/images/block07.png" alt=""/>
+            <img class="paper-big-block paper-big-block08" src="assets/images/block08.png" alt=""/>
+            <img class="paper-big-block paper-big-block09" src="assets/images/block09.png" alt=""/>
+            <img class="paper-big-block paper-big-block10" src="assets/images/block10.png" alt=""/>
+            <img class="paper-big-block paper-big-block11" src="assets/images/block01.png" alt=""/>
+            <img class="paper-big-block paper-big-block12" src="assets/images/block02.png" alt=""/>
+            <img class="paper-big-block paper-big-block13" src="assets/images/block03.png" alt=""/>
+            <img class="paper-big-block paper-big-block14" src="assets/images/block04.png" alt=""/>
+            <img class="paper-big-block paper-big-block15" src="assets/images/block05.png" alt=""/>
+
 
             <!-- machine light -->
             <div class="pamerpachine-light"></div>
@@ -198,17 +214,9 @@
 </div>
 
 <!-- page -->
-<script src="//localhost:35729/livereload.js"></script>
 <script src="assets/scripts/jquery-2.1.3.min.js"></script>
 <script src="assets/scripts/hammer.min.js"></script>
 <script src="assets/scripts/main.js"></script>
 
-<!-- less compiler -->
-<script src="assets/scripts/less.min.js"></script>
-
-<!-- browser sync -->
-<script type='text/javascript' id="__bs_script__">//<![CDATA[
-document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.7.1.js'><\/script>".replace("HOST", location.hostname));
-//]]></script>
 </body>
 </html>

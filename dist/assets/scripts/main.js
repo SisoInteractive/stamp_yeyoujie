@@ -126,6 +126,7 @@ var app = {
 
             function sceneCheckout() {
                 /** check current scene is passed the last scene */
+                console.log(app.curScene);
                 if (app.curScene <=7) {
                     var canClicked = false;
                     //  show first letter width delay
@@ -192,21 +193,17 @@ var app = {
                         sceneCheckout(app.curScene);
 
                         //  reset finished letter class state
+                        var lastLetterId = app.letter.currentLetter == 1 ? 2 : 1,
+                            lastLetter = $('.letter0' + lastLetterId);
+
+                        lastLetter.addClass('back')
+                            .removeClass('animated cutting cuttingBefore cuttingLetterDown')
+                            .find('.letter-postmark').removeClass('animated');
+
                         setTimeout(function (){
-                            var lastLetterId = app.letter.currentLetter == 1 ? 2 : 1,
-                                lastLetter = $('.letter0' + lastLetterId);
-
-                            lastLetter.addClass('back')
-                                .removeClass('animated cutting cutFinish')
-                                .find('.letter-postmark').removeClass('animated');
-                            lastLetter.find('.letter-stamp-mask').css('height', lastLetter.find('.letter-stamp-mask').attr('data-height'));
-                            lastLetter.find('.letter-money-mask').css('height', lastLetter.find('.letter-money-mask').attr('data-height'));
-
-                            setTimeout(function (){
-                                lastLetter.removeClass('back')
-                            }, 200);
-                        }, 1000);
-                    }, 4700);
+                            lastLetter.removeClass('back')
+                        }, 200);
+                    }, 9300);
                 }
             }
 
@@ -217,6 +214,7 @@ var app = {
         function sceneFinal(){
             // TODO:::: machine
             app.papermachine.show();
+            app.papermachine.machine.addClass('finalScenePaperMachine');
             //  start scene
             setTimeout(function (){
                 // TODO:: init fire
@@ -249,7 +247,7 @@ var app = {
                         }, 600);
                     }, 3000);
                 }, 2500);
-            }, 900);
+            }, 1300);
         }
 
         //  load images
@@ -273,7 +271,6 @@ var app = {
                 var img = new Image(),
                     img2 = new Image();
                 img.src = "http://ossweb-img.qq.com/images/yes/act/a20150516yesyry/letter-stamp0" + j + ".png";
-                img2.src = "http://ossweb-img.qq.com/images/yes/act/a20150516yesyry/letter-stamp-sketch-0" + j + ".png";
 
                 //  binding asset load monitor
                 img.onload = function (){
@@ -286,7 +283,6 @@ var app = {
                 };
 
                 app.letter.stamp['stamp0' + j] = img;
-                app.letter.stamp['stamp-sketch-0' + j] = img2;
             }
 
             //  make money
@@ -294,7 +290,6 @@ var app = {
                 var img = new Image(),
                     img2 = new Image();
                 img.src = "http://ossweb-img.qq.com/images/yes/act/a20150516yesyry/letter-money0" + z + ".png";
-                img2.src = "http://ossweb-img.qq.com/images/yes/act/a20150516yesyry/letter-money-sketch-0" + z + ".png";
 
                 //  binding asset load monitor
                 img.onload = function (){
@@ -307,7 +302,6 @@ var app = {
                 };
 
                 app.letter.money['money0' + z] = img;
-                app.letter.money['money-sketch-0' + z] = img2;
             }
         })();
 
@@ -326,26 +320,26 @@ var app = {
             var textDom = $('.loading-text'),
                 rate = loadedImageAmounts / imageAmounts;
 
-            //rate of 35p, 10p loaded
-            if (rate > 0.22 && rate <= 0.28 && loaded0To28 == false) {
+            //rate of 21p, 4p loaded
+            if (rate > 0.1 && rate <= 0.2 && loaded0To28 == false) {
                 loaded0To28 = true;
                 textDom.text('音乐准备中..');
             }
 
-            //rate of 35p, 15p loaded
-            if (rate > 0.35 && rate <= 0.43 && loaded29To43 == false) {
+            //rate of 21p, 12p loaded
+            if (rate > 0.3 && rate <= 0.58 && loaded29To43 == false) {
                 loaded29To43 = true;
                 textDom.text('爆米花准备完毕..');
             }
 
-            //rate of 35p, 25p loaded
-            if (rate > 0.60 && rate <= 0.72 && loaded44To72 == false) {
+            //rate of 21p, 18p loaded
+            if (rate > 0.60 && rate <= 0.82 && loaded44To72 == false) {
                 loaded44To72 = true;
                 textDom.text('纸巾准备完毕..');
             }
 
-            //rate of 35p, 30p loaded
-            if (rate > 0.75 && rate <= 0.86 && loaded73To86 == false) {
+            //rate of 21p, 19p loaded
+            if (rate > 0.82 && rate <= 1 && loaded73To86 == false) {
                 loaded73To86 = true;
                 textDom.text('好故事即将开始..');
 
@@ -367,7 +361,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneLoading();
+        sceneMain();
     },
 
     fire: {
@@ -499,36 +493,12 @@ var app = {
 
             //  change stamp
             $(currentLetter + ' .letter-stamp').attr('src', app.letter.stamp['stamp0' + index].src);
-            $(currentLetter + ' .letter-stamp-sketch').attr('src', app.letter.stamp['stamp-sketch-0' + index].src);
-
-            //  calculate the stamp mask height,
-            //  set data-height attribute to stamp mask
-            var stampMask = $(currentLetter + ' .letter-stamp-mask');
-            if (stampMask.attr('data-height')) {
-                stampMask.css({'height': stampMask.attr('data-height')});
-            } else {
-                var theHeightOfStamp = stampMask.find('.letter-stamp').height();
-                stampMask.attr('data-height', theHeightOfStamp)
-                    .css({'height': theHeightOfStamp});
-            }
 
             //  change money
             $(currentLetter + ' .letter-money').attr('src', app.letter.money['money0' + index].src);
-            $(currentLetter + ' .letter-money-sketch').attr('src', app.letter.money['money-sketch-0' + index].src);
 
             //  calculate the money height
             //  set data-height attribute to money mask
-            var moneyMask = $(currentLetter + ' .letter-money-mask');
-            if (moneyMask.attr('data-height')) {
-                moneyMask.css({'height': moneyMask.attr('data-height')});
-            } else {
-                var theHeightOfMoney = moneyMask.find('.letter-money').height();
-                moneyMask.attr('data-height', theHeightOfMoney)
-                    .css({'height': theHeightOfMoney});
-            }
-
-            //  set letter mask and calculate mask height
-            $(currentLetter + ' .letter-mask').css({'height': $(currentLetter).height()});
 
             //  show letter
             $(currentLetter).fadeIn(0).removeClass('animated')
@@ -539,41 +509,56 @@ var app = {
             // @duration 5600ms
 
             //  cutting a half of letter
-            $('.letter0' + app.letter.currentLetter).addClass('cutting');
-
-            //  begin machine animate
-            app.papermachine.start();
-
-            //  show paper blocks
-            $('.paper-block').show().addClass('move');
+            $('.letter0' + app.letter.currentLetter).addClass('cuttingBefore');
 
             setTimeout(function (){
-                $('.paper-block').hide().removeClass('move');
-            }, 7200);
+                //  begin machine animate
+                app.papermachine.start();
 
-            //  show post mark
-            setTimeout(function (){
-                app.letter.showPostmark(1);
-            }, 2000);
+                //  show paper blocks
+                $('.paper-block').show().addClass('move');
 
-            //  cutting all letter
-            setTimeout(function (){
-                var currentLetter = $('.letter0' + app.letter.currentLetter);
 
-                currentLetter.addClass('cutFinish')
-                    .find('.letter-stamp-mask').css({'height': 0});
-
-                currentLetter.find('.letter-money-mask').css({'height': 0});
-
-                //  stop machine animate
                 setTimeout(function (){
-                    app.papermachine.end();
-                    $('.fire').removeClass('animated');
-                }, 300);
+                    $('.paper-block').hide().removeClass('move');
+                }, 7200);
 
-                //  update current letter index
-                app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
-            }, 4500);
+                //  show post mark
+                setTimeout(function (){
+                    app.letter.showPostmark(1);
+                }, 2000);
+
+                //  cutting all letter
+                setTimeout(function (){
+                    var currentLetter = $('.letter0' + app.letter.currentLetter);
+
+                    currentLetter.addClass('cutting');
+
+                    //  letter down
+                    setTimeout(function (){
+                        currentLetter.addClass('cuttingLetterDown');
+                    }, 500);
+
+                    //  show pig paper blocks
+                    setTimeout(function (){
+                        $('.paper-big-block').addClass('move');
+                    }, 200);
+
+                    //  hide big paper blocks
+                    setTimeout(function (){
+                        $('.paper-big-block').removeClass('move');
+                    }, 5000);
+
+                    //  stop machine animate
+                    setTimeout(function (){
+                        app.papermachine.end();
+                        $('.fire').removeClass('animated');
+                    }, 4000);
+
+                    //  update current letter index
+                    app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
+                }, 4500);
+            }, 300);
         },
 
         showPostmark: function (){
@@ -617,5 +602,5 @@ $(function (){
     app.start();
     //console.log('program start...............');
 
-    //$('.loading').hide(); $('.start').remove();
+    $('.loading').hide(); $('.start').remove();
 });
