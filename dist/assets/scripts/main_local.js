@@ -86,6 +86,15 @@ var app = {
                     //  show
                     $('.radio').addClass('animated bounceIn');
 
+                    //  set scene video volume
+                    document.getElementById('scene01').volume = .5;
+                    document.getElementById('scene02').volume = .5;
+                    document.getElementById('scene03').volume = .5;
+                    document.getElementById('scene04').volume = .5;
+                    document.getElementById('scene05').volume = .5;
+                    document.getElementById('scene06').volume = .5;
+                    document.getElementById('scene07').volume = 1;
+
                     //  play
                     setTimeout(function (){
                         audio.play();
@@ -114,8 +123,8 @@ var app = {
              *  paper machine in,
              *
              *  This scene still show 13 seconds then checkout to next scene
-             * */
-                //  show machine
+            * */
+            //  show machine
             app.papermachine.show();
 
             //  turn on letter display
@@ -257,7 +266,7 @@ var app = {
             //  make para sentences
             for (var i = 1; i <= 7; i++) {
                 var img = new Image();
-                img.src = "http://ossweb-img.qq.com/images/yes/act/a20150516yesyry/para0" + i + ".png";
+                img.src = "assets/images/para0" + i + ".png";
 
                 //  binding asset load monitor
                 img.onload = function (){
@@ -272,8 +281,8 @@ var app = {
             for (var j = 1; j <= 7; j++) {
                 var img = new Image(),
                     img2 = new Image();
-                img.src = "http://ossweb-img.qq.com/images/yes/act/a20150516yesyry/letter-stamp0" + j + ".png";
-                img2.src = "http://ossweb-img.qq.com/images/yes/act/a20150516yesyry/letter-stamp-sketch-0" + j + ".png";
+                img.src = "assets/images/letter-stamp0" + j + ".png";
+                img2.src = "assets/images/letter-stamp-sketch-0" + j + ".png";
 
                 //  binding asset load monitor
                 img.onload = function (){
@@ -293,8 +302,8 @@ var app = {
             for (var z = 1; z <= 7; z++) {
                 var img = new Image(),
                     img2 = new Image();
-                img.src = "http://ossweb-img.qq.com/images/yes/act/a20150516yesyry/letter-money0" + z + ".png";
-                img2.src = "http://ossweb-img.qq.com/images/yes/act/a20150516yesyry/letter-money-sketch-0" + z + ".png";
+                img.src = "assets/images/letter-money0" + z + ".png";
+                img2.src = "assets/images/letter-money-sketch-0" + z + ".png";
 
                 //  binding asset load monitor
                 img.onload = function (){
@@ -398,13 +407,13 @@ var app = {
             //  create fire image
             for (var i=1; i<=imagesAmount; i++) {
                 var img = new Image();
-                img.src = 'http://ossweb-img.qq.com/images/yes/act/a20150516yesyry/fire0' + i + '.png';
+                img.src = 'assets/images/fire0' + i + '.png';
                 img.onload = function (){
                     loadedImages++;
 
                     /**  images loading monitor */
                     if (loadedImages/imagesAmount >= 0.7 && that.isReady == false) {
-                        //console.log('canvas fire image loaded complete..');
+                        console.log('canvas fire image loaded complete..');
                         that.draw(that.curFrameIndex);
                         that.isReady = true;
                     }
@@ -413,7 +422,7 @@ var app = {
                 that.images.push(img);
             }
 
-            //console.log('canvas fire image load start..');
+            console.log('canvas fire image load start..');
         },
 
         draw: function (){
@@ -468,13 +477,13 @@ var app = {
              *  set paper blocks
              *  @param   index   the id of stamp and money for this letter to show
              * */
-                // TODO:: if not init fire yet, init it
-                //if (app.fire.isInitFire == false) {
-                //    app.fire.init();
-                //    app.fire.isInitFire = true;
-                //}
+            // TODO:: if not init fire yet, init it
+            //if (app.fire.isInitFire == false) {
+            //    app.fire.init();
+            //    app.fire.isInitFire = true;
+            //}
 
-                //  play scene audio
+            //  play scene audio
             $('#scene01')[0].pause();
             $('#scene02')[0].pause();
             $('#scene03')[0].pause();
@@ -509,7 +518,7 @@ var app = {
             } else {
                 var theHeightOfStamp = stampMask.find('.letter-stamp').height();
                 stampMask.attr('data-height', theHeightOfStamp)
-                    .css({'height': theHeightOfStamp});
+                         .css({'height': theHeightOfStamp});
             }
 
             //  change money
@@ -524,7 +533,7 @@ var app = {
             } else {
                 var theHeightOfMoney = moneyMask.find('.letter-money').height();
                 moneyMask.attr('data-height', theHeightOfMoney)
-                    .css({'height': theHeightOfMoney});
+                         .css({'height': theHeightOfMoney});
             }
 
             //  set letter mask and calculate mask height
@@ -615,7 +624,7 @@ var app = {
 $(function (){
     // init app
     app.start();
-    //console.log('program start...............');
+    console.log('program start...............');
 
     //$('.loading').hide(); $('.start').remove();
 });
