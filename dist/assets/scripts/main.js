@@ -689,5 +689,5 @@ $(function (){
     app.start();
     //console.log('program start...............');
 
-    $('.loading').hide(); $('.start').remove();
+    //$('.loading').hide(); $('.start').remove();
 });

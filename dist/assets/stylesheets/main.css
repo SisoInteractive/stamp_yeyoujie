@@ -1073,7 +1073,7 @@ input {
             transform: translateY(500px);
   }
 }
-@media screen and (min-width: 560px) and (min-height: 1024px) {
+@media screen and (min-width: 768px) and (min-height: 1024px) {
   #main {
     max-width: 360px;
     max-height: 640px;
