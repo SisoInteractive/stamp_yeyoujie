@@ -360,7 +360,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneMain();
+        sceneLoading();
     },
 
     fire: {
