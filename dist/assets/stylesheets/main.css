@@ -1073,21 +1073,21 @@ input {
             transform: translateY(500px);
   }
 }
-@media screen and (min-width: 768px) and (min-height: 1024px) {
+@media screen and (min-width: 768px) {
   #main {
     max-width: 360px;
     max-height: 640px;
   }
   .letter.animated {
-    -webkit-transform: translateY(-10%);
-        -ms-transform: translateY(-10%);
-            transform: translateY(-10%);
+    -webkit-transform: translateY(52px);
+        -ms-transform: translateY(52px);
+            transform: translateY(52px);
   }
   /** letter cutting */
   .letter.cuttingBefore {
-    -webkit-transform: translateY(-5%);
-        -ms-transform: translateY(-5%);
-            transform: translateY(-5%);
+    -webkit-transform: translateY(-51px);
+        -ms-transform: translateY(-51px);
+            transform: translateY(-51px);
   }
   .letter-context {
     top: 325px;
