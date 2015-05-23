@@ -64,7 +64,7 @@ var app = {
 
         //  scene loading
         // ------------------------------------------------
-        var imageAmounts = 35,
+        var imageAmounts = 21,
             loadedImageAmounts = 0;
 
         function sceneLoading (){
@@ -115,7 +115,7 @@ var app = {
              *
              *  This scene still show 13 seconds then checkout to next scene
              * */
-                //  show machine
+            //  show machine
             app.papermachine.show();
 
             //  turn on letter display
@@ -310,37 +310,36 @@ var app = {
          *   for assets loaded progress
          * */
 
-        var loaded0To28 = false, //rate of 35p, 10p loaded
-            loaded29To43 = false, //rate of 35p, 15p loaded
-            loaded44To72 = false, //rate of 35p, 25p loaded
-            loaded73To86 = false, //rate of 35p, 30p loaded
-            loaded87To100 = false; //rate of 35p, 35p loaded
+        var loaded0To4 = false,
+            loaded5To12 = false,
+            loaded13To18 = false,
+            loaded19To21 = false;
 
         function assetsLoadMonitor(process) {
             var textDom = $('.loading-text'),
                 rate = loadedImageAmounts / imageAmounts;
 
             //rate of 21p, 4p loaded
-            if (rate > 0.1 && rate <= 0.2 && loaded0To28 == false) {
-                loaded0To28 = true;
+            if (rate > 0.1 && rate <= 0.2 && loaded0To4 == false) {
+                loaded0To4 = true;
                 textDom.text('音乐准备中..');
             }
 
             //rate of 21p, 12p loaded
-            if (rate > 0.3 && rate <= 0.58 && loaded29To43 == false) {
-                loaded29To43 = true;
+            if (rate > 0.3 && rate <= 0.58 && loaded5To12 == false) {
+                loaded5To12 = true;
                 textDom.text('爆米花准备完毕..');
             }
 
             //rate of 21p, 18p loaded
-            if (rate > 0.60 && rate <= 0.82 && loaded44To72 == false) {
-                loaded44To72 = true;
+            if (rate > 0.60 && rate <= 0.82 && loaded13To18 == false) {
+                loaded13To18 = true;
                 textDom.text('纸巾准备完毕..');
             }
 
             //rate of 21p, 19p loaded
-            if (rate > 0.82 && rate <= 1 && loaded73To86 == false) {
-                loaded73To86 = true;
+            if (rate > 0.82 && rate <= 1 && loaded19To21 == false) {
+                loaded19To21 = true;
                 textDom.text('好故事即将开始..');
 
                 //  show start button
@@ -361,7 +360,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneMain();
+        sceneLoading();
     },
 
     fire: {
@@ -518,7 +517,6 @@ var app = {
                 //  show paper blocks
                 $('.paper-block').show().addClass('move');
 
-
                 setTimeout(function (){
                     $('.paper-block').hide().removeClass('move');
                 }, 7200);
@@ -530,6 +528,9 @@ var app = {
 
                 //  cutting all letter
                 setTimeout(function (){
+                    //  show paper big blocks
+                    app.paperBlock.init();
+
                     var currentLetter = $('.letter0' + app.letter.currentLetter);
 
                     currentLetter.addClass('cutting');
@@ -558,6 +559,7 @@ var app = {
                     //  update current letter index
                     app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
                 }, 4500);
+
             }, 300);
         },
 
@@ -588,6 +590,81 @@ var app = {
         }
     },
 
+    paperBlock: {
+        create: function () {
+            /* Start by creating a wrapper div, and an empty img element */
+            var leafDiv = document.createElement('div');
+            var image = document.createElement('img');
+
+            /* Randomly choose a leaf image and assign it to the newly created element */
+            image.src = 'assets/images/block0' + this.randomInteger(1, 9) + '.png';
+
+            leafDiv.style.top = "-100px";
+
+            /* Position the leaf at a random location along the screen */
+            leafDiv.style.left = this.pixelValue(this.randomInteger(20, 320));
+
+            /* Randomly choose a spin animation */
+            var spinAnimationName = (Math.random() < 0.5) ? 'clockwiseSpin' : 'counterclockwiseSpinAndFlip';
+
+            /* Set the -webkit-animation-name property with these values */
+            leafDiv.style.webkitAnimationName = 'fade, drop';
+            image.style.webkitAnimationName = spinAnimationName;
+
+            /* Figure out a random duration for the fade and drop animations */
+            var fadeAndDropDuration = this.durationValue(this.randomFloat(2, 8));
+
+            /* Figure out another random duration for the spin animation */
+            var spinDuration = this.durationValue(this.randomFloat(2, 8));
+            /* Set the -webkit-animation-duration property with these values */
+            leafDiv.style.webkitAnimationDuration = fadeAndDropDuration + ', ' + fadeAndDropDuration;
+
+            var leafDelay = this.durationValue(this.randomFloat(0, 1));
+            leafDiv.style.webkitAnimationDelay = leafDelay + ', ' + leafDelay;
+
+            image.style.webkitAnimationDuration = spinDuration;
+
+            // add the <img> to the <div>
+            leafDiv.appendChild(image);
+
+            /* Return this img element so it can be added to the document */
+            return leafDiv;
+        },
+
+        randomInteger: function (low, high) {
+            return low + Math.floor(Math.random() * (high - low));
+        },
+
+        randomFloat: function (low, high)
+        {
+            return low + Math.random() * (high - low);
+        },
+
+        pixelValue: function (value)
+        {
+            return value + 'px';
+        },
+
+        durationValue: function (value)
+        {
+            return value + 's';
+        },
+
+        NUMBER_OF_LEAVES: 80,
+
+        init: function () {
+            /* Get a reference to the element that will contain the leaves */
+            var container = document.getElementById('paper-big-block-container');
+            container.innerHTML = "";
+
+            /* Fill the empty container with new leaves */
+            for (var i = 0; i < this.NUMBER_OF_LEAVES; i++)
+            {
+                container.appendChild(this.create());
+            }
+        }
+    },
+
     start: function (){
         //  init program
         this.init();
@@ -602,5 +679,5 @@ $(function (){
     app.start();
     //console.log('program start...............');
 
-    $('.loading').hide(); $('.start').remove();
+    //$('.loading').hide(); $('.start').remove();
 });

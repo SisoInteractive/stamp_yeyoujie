@@ -713,88 +713,81 @@ input {
   }
 }
 /* paper big block */
-.paper-big-block {
-  opacity: 0;
-  width: 10%;
+.paper-big-block-container {
   position: absolute;
-  top: 20%;
+  width: 100%;
+  height: 100%;
+  top: 100%;
 }
-.paper-big-block.move {
-  opacity: .5;
-  -webkit-transform: translate3d(0, 1000%, 0);
-          transform: translate3d(0, 1000%, 0);
-  -webkit-transition: all 4s ease-in;
-          transition: all 4s ease-in;
+.paper-big-block-container div {
+  position: absolute;
+  opacity: 0;
+  /* We use the following properties to apply the fade and drop animations to each leaf.
+       Each of these properties takes two values. These values respectively match a setting
+       for fade and drop.
+    */
+  -webkit-animation-iteration-count: 1, 1;
+  -webkit-animation-direction: normal, normal;
+  -webkit-animation-timing-function: linear, ease-in;
 }
-.paper-big-block01 {
-  left: 10%;
-  -webkit-transition-delay: 0s!important;
-          transition-delay: 0s!important;
+.paper-big-block-container div img {
+  position: absolute;
+  width: 20px;
+  /* We use the following properties to adjust the clockwiseSpin or counterclockwiseSpinAndFlip
+         animations on each leaf.
+         The createALeaf function in the Leaves.js file determines whether a leaf has the
+         clockwiseSpin or counterclockwiseSpinAndFlip animation.
+      */
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-transform-origin: 50% -100%;
 }
-.paper-big-block02 {
-  left: 10%;
-  -webkit-transition-delay: 1s!important;
-          transition-delay: 1s!important;
+/* Hides a leaf towards the very end of the animation */
+@-webkit-keyframes fade {
+  /* Show a leaf while into or below 95 percent of the animation and hide it, otherwise */
+  0% {
+    opacity: .3;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
-.paper-big-block03 {
-  left: 15%;
-  -webkit-transition-delay: 2s!important;
-          transition-delay: 2s!important;
+/* Makes a leaf fall from -300 to 600 pixels in the y-axis */
+@-webkit-keyframes drop {
+  /* Move a leaf to -300 pixels in the y-axis at the start of the animation */
+  0% {
+    -webkit-transform: translate(0px, 10px);
+  }
+  /* Move a leaf to 600 pixels in the y-axis at the end of the animation */
+  100% {
+    -webkit-transform: translate(0px, 350px);
+  }
 }
-.paper-big-block04 {
-  left: 30%;
-  -webkit-transition-delay: .8s!important;
-          transition-delay: .8s!important;
+/* Rotates a leaf from -50 to 50 degrees in 2D space */
+@-webkit-keyframes clockwiseSpin {
+  /* Rotate a leaf by -50 degrees in 2D space at the start of the animation */
+  0% {
+    -webkit-transform: rotate(-5deg);
+  }
+  /*  Rotate a leaf by 50 degrees in 2D space at the end of the animation */
+  100% {
+    -webkit-transform: rotate(5deg);
+  }
 }
-.paper-big-block05 {
-  left: 30%;
-  -webkit-transition-delay: .6s!important;
-          transition-delay: .6s!important;
-}
-.paper-big-block07 {
-  left: 45%;
-  -webkit-transition-delay: 1.2s!important;
-          transition-delay: 1.2s!important;
-}
-.paper-big-block08 {
-  left: 45%;
-  -webkit-transition-delay: 1.4s!important;
-          transition-delay: 1.4s!important;
-}
-.paper-big-block09 {
-  left: 54%;
-  -webkit-transition-delay: .4s!important;
-          transition-delay: .4s!important;
-}
-.paper-big-block10 {
-  left: 55%;
-  -webkit-transition-delay: .7s!important;
-          transition-delay: .7s!important;
-}
-.paper-big-block11 {
-  left: 50%;
-  -webkit-transition-delay: 1.6s!important;
-          transition-delay: 1.6s!important;
-}
-.paper-big-block12 {
-  left: 60%;
-  -webkit-transition-delay: 0.4s!important;
-          transition-delay: 0.4s!important;
-}
-.paper-big-block13 {
-  left: 75%;
-  -webkit-transition-delay: 1.7s!important;
-          transition-delay: 1.7s!important;
-}
-.paper-big-block14 {
-  left: 80%;
-  -webkit-transition-delay: 0.3s!important;
-          transition-delay: 0.3s!important;
-}
-.paper-big-block15 {
-  left: 85%;
-  -webkit-transition-delay: 0.1s!important;
-          transition-delay: 0.1s!important;
+/* Flips a leaf and rotates it from 50 to -50 degrees in 2D space */
+@-webkit-keyframes counterclockwiseSpinAndFlip {
+  /* Flip a leaf and rotate it by 50 degrees in 2D space at the start of the animation */
+  0% {
+    -webkit-transform: scale(-1, 1) rotate(5deg);
+  }
+  /* Flip a leaf and rotate it by -50 degrees in 2D space at the end of the animation */
+  100% {
+    -webkit-transform: scale(-1, 1) rotate(-5deg);
+  }
 }
 /* sentence */
 .sentence {
