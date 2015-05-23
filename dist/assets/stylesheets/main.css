@@ -1046,55 +1046,26 @@ input {
 /*************************************/
 /* Responsive */
 /*************************************/
-@media screen and (max-width: 360px) and (max-width: 640px) {
-  #main {
-    max-width: 360px;
-    max-height: 640px;
-  }
-}
-@media screen and (min-width: 414px) and (min-height: 736px) {
+@media screen and (max-width: 414px) and (max-width: 736px) {
   .letter.animated {
-    -webkit-transform: translateY(10px);
-        -ms-transform: translateY(10px);
-            transform: translateY(10px);
+    -webkit-transform: translateY(20px);
+        -ms-transform: translateY(20px);
+            transform: translateY(20px);
   }
-  /** letter cutting */
   .letter.cuttingBefore {
-    -webkit-transform: translateY(26px);
-        -ms-transform: translateY(26px);
-            transform: translateY(26px);
-  }
-  .letter-context {
-    top: 325px;
+    -webkit-transform: translateY(63px);
+        -ms-transform: translateY(63px);
+            transform: translateY(63px);
   }
   .papermachine.animated {
-    -webkit-transform: translateY(500px);
-        -ms-transform: translateY(500px);
-            transform: translateY(500px);
+    -webkit-transform: translateY(473px);
+        -ms-transform: translateY(473px);
+            transform: translateY(473px);
   }
 }
 @media screen and (min-width: 768px) {
   #main {
     max-width: 360px;
     max-height: 640px;
-  }
-  .letter.animated {
-    -webkit-transform: translateY(52px);
-        -ms-transform: translateY(52px);
-            transform: translateY(52px);
-  }
-  /** letter cutting */
-  .letter.cuttingBefore {
-    -webkit-transform: translateY(-51px);
-        -ms-transform: translateY(-51px);
-            transform: translateY(-51px);
-  }
-  .letter-context {
-    top: 325px;
-  }
-  .papermachine.animated {
-    -webkit-transform: translateY(450px);
-        -ms-transform: translateY(450px);
-            transform: translateY(450px);
   }
 }

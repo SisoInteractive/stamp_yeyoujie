@@ -1079,9 +1079,6 @@ input {
   }
 }
 
-
-
-
 /*************************************/
 /* Responsive */
 /*************************************/
@@ -1100,70 +1097,28 @@ input {
 
 }
 
-//  LG3: include browser toolbar height
-@media screen and (max-width: 360px) and (max-width: 640px) {
-  #main {
-    max-width: 360px;
-    max-height: 640px;
-  }
-}
-
 //  iphone6: include browser toolbar height
-@media screen and (max-width: 375px) and (max-height: 667px) {
-
-}
-
-//  LG Nexus 4: include browser toolbar height
-@media screen and (max-width: 384px) and (max-width: 640px) {
-
-}
-
-//  iphone6: include browser toolbar height
-@media screen and (min-width: 414px) and (min-height: 736px) {
+@media screen and (max-width: 414px) and (max-width: 736px) {
   .letter.animated {
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
 
-  /** letter cutting */
   .letter.cuttingBefore {
-    transform: translateY(26px);
-  }
-
-  .letter-context {
-    top: 325px;
+    transform: translateY(63px);
   }
 
   .papermachine.animated {
-    transform: translateY(500px);
+    transform: translateY(473px);
   }
 }
 
-//  Blackberry Passport: include browser toolbar height
-@media screen and (max-width: 504px) and (max-width: 504px) {
-
+//  LG3: include browser toolbar height
+@media screen and (max-width: 360px) and (max-width: 640px) {
 }
 
-//  table devices
 @media screen and (min-width: 768px) {
   #main {
     max-width: 360px;
     max-height: 640px;
-  }
-
-  .letter.animated {
-    transform: translateY(52px);
-  }
-
-  /** letter cutting */
-  .letter.cuttingBefore {
-    transform: translateY(-51px);
-  }
-
-  .letter-context {
-    top: 325px;
-  }
-
-  .papermachine.animated {
-    transform: translateY(450px);
   }
 }
