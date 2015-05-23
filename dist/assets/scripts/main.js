@@ -360,7 +360,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneLoading();
+        sceneMain();
     },
 
     fire: {
@@ -502,6 +502,11 @@ var app = {
             //  show letter
             $(currentLetter).fadeIn(0).removeClass('animated')
                 .addClass('animated');
+
+            //  show post mark
+            setTimeout(function (){
+                app.letter.showPostmark(1);
+            }, 2200);
         },
 
         cutLetter: function (sceneIndex){
@@ -511,20 +516,17 @@ var app = {
             $('.letter0' + app.letter.currentLetter).addClass('cuttingBefore');
 
             setTimeout(function (){
-                //  begin machine animate
-                app.papermachine.start();
-
                 //  show paper blocks
                 $('.paper-block').show().addClass('move');
+            }, 200);
+
+            setTimeout(function (){
+                //  begin machine animate
+                app.papermachine.start();
 
                 setTimeout(function (){
                     $('.paper-block').hide().removeClass('move');
                 }, 7200);
-
-                //  show post mark
-                setTimeout(function (){
-                    app.letter.showPostmark(1);
-                }, 2000);
 
                 //  cutting all letter
                 setTimeout(function (){
@@ -538,7 +540,7 @@ var app = {
                     //  letter down
                     setTimeout(function (){
                         currentLetter.addClass('cuttingLetterDown');
-                    }, 500);
+                    }, 200);
 
                     //  show pig paper blocks
                     setTimeout(function (){
@@ -599,10 +601,10 @@ var app = {
             /* Randomly choose a leaf image and assign it to the newly created element */
             image.src = 'assets/images/block0' + this.randomInteger(1, 9) + '.png';
 
-            leafDiv.style.top = "-100px";
+            leafDiv.style.top = "-80px";
 
             /* Position the leaf at a random location along the screen */
-            leafDiv.style.left = this.pixelValue(this.randomInteger(20, 320));
+            leafDiv.style.left = this.pixelValue(this.randomInteger(50, 280));
 
             /* Randomly choose a spin animation */
             var spinAnimationName = (Math.random() < 0.5) ? 'clockwiseSpin' : 'counterclockwiseSpinAndFlip';
@@ -612,10 +614,10 @@ var app = {
             image.style.webkitAnimationName = spinAnimationName;
 
             /* Figure out a random duration for the fade and drop animations */
-            var fadeAndDropDuration = this.durationValue(this.randomFloat(2, 8));
+            var fadeAndDropDuration = this.durationValue(this.randomFloat(3, 6));
 
             /* Figure out another random duration for the spin animation */
-            var spinDuration = this.durationValue(this.randomFloat(2, 8));
+            var spinDuration = this.durationValue(this.randomFloat(3, 6));
             /* Set the -webkit-animation-duration property with these values */
             leafDiv.style.webkitAnimationDuration = fadeAndDropDuration + ', ' + fadeAndDropDuration;
 
@@ -650,7 +652,7 @@ var app = {
             return value + 's';
         },
 
-        NUMBER_OF_LEAVES: 80,
+        NUMBER_OF_LEAVES: 50,
 
         init: function () {
             /* Get a reference to the element that will contain the leaves */
@@ -658,10 +660,18 @@ var app = {
             container.innerHTML = "";
 
             /* Fill the empty container with new leaves */
-            for (var i = 0; i < this.NUMBER_OF_LEAVES; i++)
+            for (var i = 0; i < Math.floor(this.NUMBER_OF_LEAVES/2); i++)
             {
                 container.appendChild(this.create());
             }
+
+            var that = this;
+            setTimeout(function () {
+                for (var i = Math.floor(that.NUMBER_OF_LEAVES/2); i < that.NUMBER_OF_LEAVES; i++)
+                {
+                    container.appendChild(that.create());
+                }
+            }, 2000);
         }
     },
 
@@ -679,5 +689,5 @@ $(function (){
     app.start();
     //console.log('program start...............');
 
-    //$('.loading').hide(); $('.start').remove();
+    $('.loading').hide(); $('.start').remove();
 });

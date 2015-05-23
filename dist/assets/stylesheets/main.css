@@ -379,34 +379,36 @@ input {
   overflow: hidden;
   position: absolute;
   top: 0;
-  left: 11%;
+  left: 0;
+  right: 0;
   z-index: 20;
-  width: 78%;
-  height: 100%;
-  -webkit-transform: translateY(-110%);
-      -ms-transform: translateY(-110%);
-          transform: translateY(-110%);
+  width: 250px;
+  height: 516px;
+  margin: 0 auto;
+  -webkit-transform: translateY(-516px);
+      -ms-transform: translateY(-516px);
+          transform: translateY(-516px);
 }
 .letter.animated {
-  -webkit-transform: translateY(-13%);
-      -ms-transform: translateY(-13%);
-          transform: translateY(-13%);
+  -webkit-transform: translateY(-93px);
+      -ms-transform: translateY(-93px);
+          transform: translateY(-93px);
   -webkit-transition: all 2s ease-out;
   transition: all 2s ease-out;
 }
 /** letter cutting */
 .letter.cuttingBefore {
-  -webkit-transform: translateY(-6%);
-      -ms-transform: translateY(-6%);
-          transform: translateY(-6%);
+  -webkit-transform: translateY(-51px);
+      -ms-transform: translateY(-51px);
+          transform: translateY(-51px);
 }
 .letter.cuttingLetterDown {
-  top: 80%;
+  top: 486px;
 }
 .letter.cutting {
   height: 0;
-  -webkit-transition: all 4s ease-out;
-  transition: all 4s ease-out;
+  -webkit-transition: all 4s linear!important;
+          transition: all 4s linear!important;
 }
 .letter.back {
   -webkit-transition: -webkit-transform 0s linear;
@@ -416,18 +418,19 @@ input {
   position: absolute;
   top: 30px;
   z-index: 10;
-  width: 100%;
-  height: 100%;
+  width: 250px;
+  height: 486px;
   overflow: hidden;
-  -webkit-transition: height 3.5s linear;
-  transition: height 3.5s linear;
+  -webkit-transition: height 2.5s linear;
+  transition: height 2.5s linear;
 }
 .letter-mask {
   width: 100%;
   height: 100%;
 }
 .letter-mask img {
-  width: 100%;
+  width: 250px;
+  height: 486px;
 }
 .letter-stamp-mask {
   overflow: hidden;
@@ -544,7 +547,7 @@ input {
   filter: blur(5px);
 }
 .machine {
-  max-width: 100.5%;
+  width: 100%;
   position: relative;
   z-index: 10;
 }
@@ -555,9 +558,9 @@ input {
   z-index: 10;
 }
 .papermachine.animated {
-  -webkit-transform: translateY(70.666667%);
-      -ms-transform: translateY(70.666667%);
-          transform: translateY(70.666667%);
+  -webkit-transform: translateY(400px);
+      -ms-transform: translateY(400px);
+          transform: translateY(400px);
 }
 .papermachine.finalScenePaperMachine {
   -webkit-transform: translateY(46.666667%);
@@ -747,7 +750,7 @@ input {
 @-webkit-keyframes fade {
   /* Show a leaf while into or below 95 percent of the animation and hide it, otherwise */
   0% {
-    opacity: .3;
+    opacity: 1;
   }
   95% {
     opacity: 1;
@@ -1048,16 +1051,50 @@ input {
     max-width: 360px;
     max-height: 640px;
   }
+}
+@media screen and (min-width: 414px) and (min-height: 736px) {
+  .letter.animated {
+    -webkit-transform: translateY(10px);
+        -ms-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+  /** letter cutting */
+  .letter.cuttingBefore {
+    -webkit-transform: translateY(26px);
+        -ms-transform: translateY(26px);
+            transform: translateY(26px);
+  }
   .letter-context {
-    top: 365px;
+    top: 325px;
+  }
+  .papermachine.animated {
+    -webkit-transform: translateY(500px);
+        -ms-transform: translateY(500px);
+            transform: translateY(500px);
   }
 }
-@media screen and (min-width: 560px) {
+@media screen and (min-width: 560px) and (min-height: 1024px) {
   #main {
     max-width: 360px;
     max-height: 640px;
   }
+  .letter.animated {
+    -webkit-transform: translateY(-10%);
+        -ms-transform: translateY(-10%);
+            transform: translateY(-10%);
+  }
+  /** letter cutting */
+  .letter.cuttingBefore {
+    -webkit-transform: translateY(-5%);
+        -ms-transform: translateY(-5%);
+            transform: translateY(-5%);
+  }
   .letter-context {
-    top: 365px;
+    top: 325px;
+  }
+  .papermachine.animated {
+    -webkit-transform: translateY(450px);
+        -ms-transform: translateY(450px);
+            transform: translateY(450px);
   }
 }
