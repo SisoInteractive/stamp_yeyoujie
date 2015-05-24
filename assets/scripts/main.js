@@ -206,6 +206,8 @@ var app = {
         function sceneFinal(){
             // TODO:::: machine
             app.papermachine.show();
+            app.papermachine.machine.addClass('finish');
+
             //  start scene
             setTimeout(function (){
                 // TODO:: init fire
@@ -238,7 +240,7 @@ var app = {
                         }, 600);
                     }, 3000);
                 }, 2500);
-            }, 900);
+            }, 1600);
         }
 
         //  load images
@@ -356,7 +358,7 @@ var app = {
         }
 
         /**  start first scene */
-        sceneMain();
+        sceneLoading();
     },
 
     fire: {
@@ -606,5 +608,5 @@ $(function (){
     app.start();
     console.log('program start...............');
 
-    $('.loading').hide(); $('.start').remove();
+    //$('.loading').hide(); $('.start').remove();
 });

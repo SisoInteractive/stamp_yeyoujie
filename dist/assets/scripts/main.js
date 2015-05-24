@@ -75,15 +75,6 @@ var app = {
                     //  show
                     $('.radio').addClass('animated bounceIn');
 
-                    //  set scene video volume
-                    document.getElementById('scene01').volume = .5;
-                    document.getElementById('scene02').volume = .5;
-                    document.getElementById('scene03').volume = .5;
-                    document.getElementById('scene04').volume = .5;
-                    document.getElementById('scene05').volume = .5;
-                    document.getElementById('scene06').volume = .5;
-                    document.getElementById('scene07').volume = 1;
-
                     //  play
                     setTimeout(function (){
                         audio.play();
@@ -215,6 +206,8 @@ var app = {
         function sceneFinal(){
             // TODO:::: machine
             app.papermachine.show();
+            app.papermachine.machine.addClass('finish');
+
             //  start scene
             setTimeout(function (){
                 // TODO:: init fire
@@ -247,7 +240,7 @@ var app = {
                         }, 600);
                     }, 3000);
                 }, 2500);
-            }, 900);
+            }, 1600);
         }
 
         //  load images
