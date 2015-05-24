@@ -533,7 +533,9 @@ var app = {
             $('.letter0' + app.letter.currentLetter).addClass('cutting');
 
             //  begin machine animate
-            app.papermachine.start();
+            setTimeout(function (){
+                app.papermachine.start();
+            }, 200);
 
             //  show paper blocks
             //$('.paper-block').show().addClass('move');
@@ -560,11 +562,11 @@ var app = {
                 setTimeout(function (){
                     app.papermachine.end();
                     $('.fire').removeClass('animated');
-                }, 300);
+                }, 1200);
 
                 //  update current letter index
                 app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
-            }, 3500);
+            }, 2500);
         },
 
         showPostmark: function (){

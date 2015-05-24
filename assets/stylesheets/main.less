@@ -362,13 +362,13 @@ input {
 }
 
 .letter.animated {
-  transform: translateY(-23%);
+  transform: translateY(-17%);
   .transition(transform, 2s, ease-out);
 }
 
 /** letter cutting */
 .letter.cutting {
-  transform: translateY(16%);
+  transform: translateY(22%);
 
   .letter-full-mask {
     height: 65%;
@@ -378,24 +378,24 @@ input {
 
 .letter.cutFinish {
   transform: translateY(130%);
-  .transition(transform, 1s, ease-out);
+  .transition(transform, 2s, ease-out);
 
   /* mask cutting */
   .letter-full-mask {
     height: 0;
-    .transition(height, .5s, ease-out);
+    .transition(height, 1.2s, ease-out);
   }
 
   /* money cutting */
   .letter-money-mask {
-    .transition(height, .2s, ease-out);
-    transition-delay: .3s;
+    .transition(height, .5s, ease-out);
+    transition-delay: .7s;
   }
 
   /* stamp cutting */
   .letter-stamp-mask {
-    .transition(height, .2s, ease-out);
-    transition-delay: .1s;
+    .transition(height, .4s, ease-out);
+    transition-delay: .3s;
   }
 }
 
@@ -598,7 +598,7 @@ input {
 }
 
 .papermachine.animated {
-  transform: translateY(66.666667%);
+  transform: translateY(72.666667%);
 }
 
 .papermachine.finish {
