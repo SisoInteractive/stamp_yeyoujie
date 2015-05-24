@@ -195,7 +195,7 @@ var app = {
                                 lastLetter.removeClass('back')
                             }, 200);
                         }, 1000);
-                    }, 3700);
+                    }, 3600);
                 }
             }
 
@@ -530,7 +530,7 @@ var app = {
             // @duration 5600ms
 
             //  cutting a half of letter
-            $('.letter0' + app.letter.currentLetter).addClass('cutting');
+            //$('.letter0' + app.letter.currentLetter).addClass('cutting');
 
             //  begin machine animate
             setTimeout(function (){
@@ -545,28 +545,24 @@ var app = {
             //}, 7200);
 
             //  show post mark
-            setTimeout(function (){
-                app.letter.showPostmark(1);
-            }, 2000);
+            app.letter.showPostmark(1);
 
             //  cutting all letter
+            var currentLetter = $('.letter0' + app.letter.currentLetter);
+
+            currentLetter.addClass('cutFinish')
+                .find('.letter-stamp-mask').css({'height': 0});
+
+            currentLetter.find('.letter-money-mask').css({'height': 0});
+
+            //  stop machine animate
             setTimeout(function (){
-                var currentLetter = $('.letter0' + app.letter.currentLetter);
+                app.papermachine.end();
+                $('.fire').removeClass('animated');
+            }, 1200);
 
-                currentLetter.addClass('cutFinish')
-                    .find('.letter-stamp-mask').css({'height': 0});
-
-                currentLetter.find('.letter-money-mask').css({'height': 0});
-
-                //  stop machine animate
-                setTimeout(function (){
-                    app.papermachine.end();
-                    $('.fire').removeClass('animated');
-                }, 1200);
-
-                //  update current letter index
-                app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
-            }, 2500);
+            //  update current letter index
+            app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
         },
 
         showPostmark: function (){
