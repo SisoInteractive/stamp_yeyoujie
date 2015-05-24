@@ -84,7 +84,7 @@ var app = {
                 //  into sceneMain
                 setTimeout(function (){
                     sceneMain();
-                }, 3000);
+                }, 600);
             });
 
             $('.start').fadeOut(900);
@@ -144,7 +144,7 @@ var app = {
                     /** into final scene */
                     setTimeout(function (){
                         sceneFinal();
-                    }, 900);
+                    }, 1500);
                 }
 
                 //  bind click button to cut email
@@ -195,7 +195,7 @@ var app = {
                                 lastLetter.removeClass('back')
                             }, 200);
                         }, 1000);
-                    }, 4700);
+                    }, 3200);
                 }
             }
 
@@ -536,11 +536,11 @@ var app = {
             app.papermachine.start();
 
             //  show paper blocks
-            $('.paper-block').show().addClass('move');
-
-            setTimeout(function (){
-                $('.paper-block').hide().removeClass('move');
-            }, 7200);
+            //$('.paper-block').show().addClass('move');
+            //
+            //setTimeout(function (){
+            //    $('.paper-block').hide().removeClass('move');
+            //}, 7200);
 
             //  show post mark
             setTimeout(function (){
@@ -564,7 +564,7 @@ var app = {
 
                 //  update current letter index
                 app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
-            }, 4500);
+            }, 3000);
         },
 
         showPostmark: function (){
