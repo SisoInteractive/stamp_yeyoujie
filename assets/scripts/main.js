@@ -195,7 +195,7 @@ var app = {
                                 lastLetter.removeClass('back')
                             }, 200);
                         }, 1000);
-                    }, 3200);
+                    }, 3700);
                 }
             }
 
@@ -240,7 +240,7 @@ var app = {
                         }, 600);
                     }, 3000);
                 }, 2500);
-            }, 1600);
+            }, 1200);
         }
 
         //  load images
@@ -564,7 +564,7 @@ var app = {
 
                 //  update current letter index
                 app.letter.currentLetter == 1 ? app.letter.currentLetter = 2 : app.letter.currentLetter = 1;
-            }, 3000);
+            }, 3500);
         },
 
         showPostmark: function (){
