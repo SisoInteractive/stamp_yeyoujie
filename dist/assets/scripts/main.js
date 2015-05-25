@@ -144,7 +144,7 @@ var app = {
                     /** into final scene */
                     setTimeout(function (){
                         sceneFinal();
-                    }, 1500);
+                    }, 300);
                 }
 
                 //  bind click button to cut email
@@ -227,8 +227,6 @@ var app = {
 
                 //  move flag to machine
                 setTimeout(function (){
-                    $('.scene02').addClass('moveToMachine');
-
                     //  show flag animation
                     setTimeout(function (){
                         $('.scene02').addClass('cutting');
@@ -238,7 +236,7 @@ var app = {
                             $('.papermachine').addClass('cutting');
                             $('.fire').addClass('animated finalSceneFire');
                         }, 600);
-                    }, 3000);
+                    }, 900);
                 }, 2500);
             }, 1200);
         }

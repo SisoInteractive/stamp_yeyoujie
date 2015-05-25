@@ -838,18 +838,11 @@ input {
   max-width: 100%;
 }
 .scene02.animated .flagWrap {
-  -webkit-transform: translateY(-10%);
-      -ms-transform: translateY(-10%);
-          transform: translateY(-10%);
-  -webkit-transition: -webkit-transform 2s ease-out;
-  transition: transform 2s ease-out;
-}
-.scene02.moveToMachine .flagWrap {
   -webkit-transform: translateY(17%);
       -ms-transform: translateY(17%);
           transform: translateY(17%);
-  -webkit-transition: -webkit-transform 1s ease-out;
-  transition: transform 1s ease-out;
+  -webkit-transition: -webkit-transform 2s ease-out;
+  transition: transform 2s ease-out;
 }
 .scene02.cutting .flagWrap {
   -webkit-animation: downUp 4s infinite;
